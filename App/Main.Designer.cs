@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+         #region Код, автоматически созданный конструктором форм Windows
 
         /// <summary>
         /// Требуемый метод для поддержки конструктора — не изменяйте 
@@ -33,10 +33,10 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonList = new System.Windows.Forms.Button();
+            this.buttonRedaction = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,71 +94,71 @@
             this.radioButton3.Text = "По категории";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(22, 544);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(88, 28);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonAdd.Location = new System.Drawing.Point(22, 544);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(88, 28);
+            this.buttonAdd.TabIndex = 5;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // button2
+            // buttonList
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(442, 544);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 28);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Список участников";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonList.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonList.Location = new System.Drawing.Point(442, 544);
+            this.buttonList.Name = "buttonList";
+            this.buttonList.Size = new System.Drawing.Size(159, 28);
+            this.buttonList.TabIndex = 6;
+            this.buttonList.Text = "Список участников";
+            this.buttonList.UseVisualStyleBackColor = false;
+            this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 
-            // button3
+            // buttonRedaction
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(629, 544);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(127, 28);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Редактировать";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonRedaction.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonRedaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRedaction.Location = new System.Drawing.Point(629, 544);
+            this.buttonRedaction.Name = "buttonRedaction";
+            this.buttonRedaction.Size = new System.Drawing.Size(127, 28);
+            this.buttonRedaction.TabIndex = 7;
+            this.buttonRedaction.Text = "Редактировать";
+            this.buttonRedaction.UseVisualStyleBackColor = false;
+            this.buttonRedaction.Click += new System.EventHandler(this.buttonRedaction_Click);
             // 
-            // button4
+            // buttonDelete
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(779, 544);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(80, 28);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Удалить";
-            this.button4.UseVisualStyleBackColor = false;
+            this.buttonDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Location = new System.Drawing.Point(779, 544);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(80, 28);
+            this.buttonDelete.TabIndex = 8;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 604);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonRedaction);
+            this.Controls.Add(this.buttonList);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "Главная";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -173,10 +173,10 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonList;
+        private System.Windows.Forms.Button buttonRedaction;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 

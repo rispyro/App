@@ -58,7 +58,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Name = "Participants";
-            this.Text = "Participants";
+            this.Text = "Список участников";
             this.Load += new System.EventHandler(this.Participants_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

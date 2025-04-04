@@ -217,7 +217,8 @@
             this.Controls.Add(this.textCategory);
             this.Controls.Add(this.textTitle);
             this.Name = "Redaction";
-            this.Text = "Redaction";
+            this.Text = "Редактирование";
+            this.Load += new System.EventHandler(this.Redaction_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

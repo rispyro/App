@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace App
@@ -19,26 +13,24 @@ namespace App
 
         private void Add_Load(object sender, EventArgs e)
         {
-            LoadUsers();
+            LoadParticipation();
         }
 
         private void btnAddParticipant_Click(object sender, EventArgs e)
         {
             using (EventsContext db = new EventsContext())
             {
-                
-                Participation newParticipant = new Participation{Name = textParticipant.Text};
-                
+                Participation newParticipant = new Participation { Name = textParticipant.Text };
                 db.Participation.Add(newParticipant);
-                LoadUsers();
                 db.SaveChanges();
+                LoadParticipation();
                 MessageBox.Show("Пользователь добавлен");
 
             }
         }
-        private void LoadUsers()
+        private void LoadParticipation()
         {
-            using (var db = new EventsContext())
+            using (EventsContext db = new EventsContext())
             {
                 dataGridParticipant.DataSource = db.Participation.ToList();
             }
@@ -50,9 +42,8 @@ namespace App
             {
                 Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
                 db.Events.Add(newEvent);
-                LoadUsers();
                 db.SaveChanges();
-                MessageBox.Show("Пользователь добавлен");
+                MessageBox.Show("Событие добавлено");
             }
         }
     }

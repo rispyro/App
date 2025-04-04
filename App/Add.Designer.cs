@@ -221,7 +221,7 @@
             this.Controls.Add(this.textCategory);
             this.Controls.Add(this.textTitle);
             this.Name = "Add";
-            this.Text = "Add";
+            this.Text = "Добавление";
             this.Load += new System.EventHandler(this.Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).EndInit();
             this.ResumeLayout(false);
