@@ -37,7 +37,14 @@ namespace App
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            LoadUsers();
+        }
+        private void LoadUsers()
+        {
+            using (var db = new EventsContext())
+            {
+                dataGridView1.DataSource = db.Events.ToList();
+            }
         }
     }
 }

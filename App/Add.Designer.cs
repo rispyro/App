@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textTitle = new System.Windows.Forms.TextBox();
+            this.textCategory = new System.Windows.Forms.TextBox();
+            this.textTime = new System.Windows.Forms.TextBox();
+            this.textDate = new System.Windows.Forms.TextBox();
+            this.textDescription = new System.Windows.Forms.TextBox();
+            this.textParticipant = new System.Windows.Forms.TextBox();
+            this.btnAddParticipant = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddEvent = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,91 +44,86 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.dataGridParticipant = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 22);
-            this.textBox1.TabIndex = 0;
+            this.textTitle.Location = new System.Drawing.Point(28, 40);
+            this.textTitle.Name = "textTitle";
+            this.textTitle.Size = new System.Drawing.Size(114, 22);
+            this.textTitle.TabIndex = 0;
             // 
-            // textBox2
+            // textCategory
             // 
-            this.textBox2.Location = new System.Drawing.Point(28, 265);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 22);
-            this.textBox2.TabIndex = 1;
+            this.textCategory.Location = new System.Drawing.Point(28, 265);
+            this.textCategory.Name = "textCategory";
+            this.textCategory.Size = new System.Drawing.Size(114, 22);
+            this.textCategory.TabIndex = 1;
             // 
-            // textBox3
+            // textTime
             // 
-            this.textBox3.Location = new System.Drawing.Point(28, 206);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(114, 22);
-            this.textBox3.TabIndex = 2;
+            this.textTime.Location = new System.Drawing.Point(28, 206);
+            this.textTime.Name = "textTime";
+            this.textTime.Size = new System.Drawing.Size(114, 22);
+            this.textTime.TabIndex = 2;
             // 
-            // textBox4
+            // textDate
             // 
-            this.textBox4.Location = new System.Drawing.Point(28, 146);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(114, 22);
-            this.textBox4.TabIndex = 3;
+            this.textDate.Location = new System.Drawing.Point(28, 146);
+            this.textDate.Name = "textDate";
+            this.textDate.Size = new System.Drawing.Size(114, 22);
+            this.textDate.TabIndex = 3;
             // 
-            // textBox5
+            // textDescription
             // 
-            this.textBox5.Location = new System.Drawing.Point(28, 91);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(114, 22);
-            this.textBox5.TabIndex = 4;
+            this.textDescription.Location = new System.Drawing.Point(28, 91);
+            this.textDescription.Name = "textDescription";
+            this.textDescription.Size = new System.Drawing.Size(114, 22);
+            this.textDescription.TabIndex = 4;
             // 
-            // textBox6
+            // textParticipant
             // 
-            this.textBox6.Location = new System.Drawing.Point(28, 326);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(114, 22);
-            this.textBox6.TabIndex = 5;
+            this.textParticipant.Location = new System.Drawing.Point(28, 326);
+            this.textParticipant.Name = "textParticipant";
+            this.textParticipant.Size = new System.Drawing.Size(114, 22);
+            this.textParticipant.TabIndex = 5;
             // 
-            // button1
+            // btnAddParticipant
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(28, 393);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 28);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Добавить участника";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddParticipant.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddParticipant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddParticipant.Location = new System.Drawing.Point(28, 393);
+            this.btnAddParticipant.Name = "btnAddParticipant";
+            this.btnAddParticipant.Size = new System.Drawing.Size(155, 28);
+            this.btnAddParticipant.TabIndex = 6;
+            this.btnAddParticipant.Text = "Добавить участника";
+            this.btnAddParticipant.UseVisualStyleBackColor = false;
+            this.btnAddParticipant.Click += new System.EventHandler(this.btnAddParticipant_Click);
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(28, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 28);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Удалить участника";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(28, 444);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(155, 28);
+            this.btnDelete.TabIndex = 7;
+            this.btnDelete.Text = "Удалить участника";
+            this.btnDelete.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnAddEvent
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(373, 444);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(157, 28);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Добавить событие";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(237, 40);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(293, 388);
-            this.listBox1.TabIndex = 9;
+            this.btnAddEvent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEvent.Location = new System.Drawing.Point(373, 444);
+            this.btnAddEvent.Name = "btnAddEvent";
+            this.btnAddEvent.Size = new System.Drawing.Size(157, 28);
+            this.btnAddEvent.TabIndex = 8;
+            this.btnAddEvent.Text = "Добавить событие";
+            this.btnAddEvent.UseVisualStyleBackColor = false;
+            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
             // 
             // label1
             // 
@@ -194,11 +188,22 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Список участников";
             // 
+            // dataGridParticipant
+            // 
+            this.dataGridParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridParticipant.Location = new System.Drawing.Point(237, 40);
+            this.dataGridParticipant.Name = "dataGridParticipant";
+            this.dataGridParticipant.RowHeadersWidth = 51;
+            this.dataGridParticipant.RowTemplate.Height = 24;
+            this.dataGridParticipant.Size = new System.Drawing.Size(293, 388);
+            this.dataGridParticipant.TabIndex = 17;
+            // 
             // Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 527);
+            this.Controls.Add(this.dataGridParticipant);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -206,19 +211,19 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnAddEvent);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAddParticipant);
+            this.Controls.Add(this.textParticipant);
+            this.Controls.Add(this.textDescription);
+            this.Controls.Add(this.textDate);
+            this.Controls.Add(this.textTime);
+            this.Controls.Add(this.textCategory);
+            this.Controls.Add(this.textTitle);
             this.Name = "Add";
             this.Text = "Add";
             this.Load += new System.EventHandler(this.Add_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,16 +231,15 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textTitle;
+        private System.Windows.Forms.TextBox textCategory;
+        private System.Windows.Forms.TextBox textTime;
+        private System.Windows.Forms.TextBox textDate;
+        private System.Windows.Forms.TextBox textDescription;
+        private System.Windows.Forms.TextBox textParticipant;
+        private System.Windows.Forms.Button btnAddParticipant;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAddEvent;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -243,5 +247,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dataGridParticipant;
     }
 }

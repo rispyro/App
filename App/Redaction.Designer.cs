@@ -35,16 +35,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listOfPaticipant = new System.Windows.Forms.ListBox();
+            this.btnAddEvent = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddPaticipant = new System.Windows.Forms.Button();
+            this.textParticipant = new System.Windows.Forms.TextBox();
+            this.textDescription = new System.Windows.Forms.TextBox();
+            this.textDate = new System.Windows.Forms.TextBox();
+            this.textTime = new System.Windows.Forms.TextBox();
+            this.textCategory = new System.Windows.Forms.TextBox();
+            this.textTitle = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label7
@@ -110,89 +110,89 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Название";
             // 
-            // listBox1
+            // listOfPaticipant
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(231, 41);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(293, 388);
-            this.listBox1.TabIndex = 26;
+            this.listOfPaticipant.FormattingEnabled = true;
+            this.listOfPaticipant.ItemHeight = 16;
+            this.listOfPaticipant.Location = new System.Drawing.Point(231, 41);
+            this.listOfPaticipant.Name = "listOfPaticipant";
+            this.listOfPaticipant.Size = new System.Drawing.Size(293, 388);
+            this.listOfPaticipant.TabIndex = 26;
             // 
-            // button3
+            // btnAddEvent
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(369, 445);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 28);
-            this.button3.TabIndex = 25;
-            this.button3.Text = "Добавить событие";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnAddEvent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEvent.Location = new System.Drawing.Point(369, 445);
+            this.btnAddEvent.Name = "btnAddEvent";
+            this.btnAddEvent.Size = new System.Drawing.Size(155, 28);
+            this.btnAddEvent.TabIndex = 25;
+            this.btnAddEvent.Text = "Добавить событие";
+            this.btnAddEvent.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(22, 445);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 28);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "Удалить участника";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(22, 445);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(155, 28);
+            this.btnDelete.TabIndex = 24;
+            this.btnDelete.Text = "Удалить участника";
+            this.btnDelete.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAddPaticipant
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(22, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 28);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Добавить участника";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAddPaticipant.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddPaticipant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPaticipant.Location = new System.Drawing.Point(22, 401);
+            this.btnAddPaticipant.Name = "btnAddPaticipant";
+            this.btnAddPaticipant.Size = new System.Drawing.Size(155, 28);
+            this.btnAddPaticipant.TabIndex = 23;
+            this.btnAddPaticipant.Text = "Добавить участника";
+            this.btnAddPaticipant.UseVisualStyleBackColor = false;
             // 
-            // textBox6
+            // textParticipant
             // 
-            this.textBox6.Location = new System.Drawing.Point(22, 327);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(114, 22);
-            this.textBox6.TabIndex = 22;
+            this.textParticipant.Location = new System.Drawing.Point(22, 327);
+            this.textParticipant.Name = "textParticipant";
+            this.textParticipant.Size = new System.Drawing.Size(114, 22);
+            this.textParticipant.TabIndex = 22;
             // 
-            // textBox5
+            // textDescription
             // 
-            this.textBox5.Location = new System.Drawing.Point(22, 92);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(114, 22);
-            this.textBox5.TabIndex = 21;
+            this.textDescription.Location = new System.Drawing.Point(22, 92);
+            this.textDescription.Name = "textDescription";
+            this.textDescription.Size = new System.Drawing.Size(114, 22);
+            this.textDescription.TabIndex = 21;
             // 
-            // textBox4
+            // textDate
             // 
-            this.textBox4.Location = new System.Drawing.Point(22, 147);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(114, 22);
-            this.textBox4.TabIndex = 20;
+            this.textDate.Location = new System.Drawing.Point(22, 147);
+            this.textDate.Name = "textDate";
+            this.textDate.Size = new System.Drawing.Size(114, 22);
+            this.textDate.TabIndex = 20;
             // 
-            // textBox3
+            // textTime
             // 
-            this.textBox3.Location = new System.Drawing.Point(22, 207);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(114, 22);
-            this.textBox3.TabIndex = 19;
+            this.textTime.Location = new System.Drawing.Point(22, 207);
+            this.textTime.Name = "textTime";
+            this.textTime.Size = new System.Drawing.Size(114, 22);
+            this.textTime.TabIndex = 19;
             // 
-            // textBox2
+            // textCategory
             // 
-            this.textBox2.Location = new System.Drawing.Point(22, 266);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 22);
-            this.textBox2.TabIndex = 18;
+            this.textCategory.Location = new System.Drawing.Point(22, 266);
+            this.textCategory.Name = "textCategory";
+            this.textCategory.Size = new System.Drawing.Size(114, 22);
+            this.textCategory.TabIndex = 18;
             // 
-            // textBox1
+            // textTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(22, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 22);
-            this.textBox1.TabIndex = 17;
+            this.textTitle.Location = new System.Drawing.Point(22, 41);
+            this.textTitle.Name = "textTitle";
+            this.textTitle.Size = new System.Drawing.Size(114, 22);
+            this.textTitle.TabIndex = 17;
             // 
             // Redaction
             // 
@@ -206,16 +206,16 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listOfPaticipant);
+            this.Controls.Add(this.btnAddEvent);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAddPaticipant);
+            this.Controls.Add(this.textParticipant);
+            this.Controls.Add(this.textDescription);
+            this.Controls.Add(this.textDate);
+            this.Controls.Add(this.textTime);
+            this.Controls.Add(this.textCategory);
+            this.Controls.Add(this.textTitle);
             this.Name = "Redaction";
             this.Text = "Redaction";
             this.ResumeLayout(false);
@@ -232,15 +232,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listOfPaticipant;
+        private System.Windows.Forms.Button btnAddEvent;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAddPaticipant;
+        private System.Windows.Forms.TextBox textParticipant;
+        private System.Windows.Forms.TextBox textDescription;
+        private System.Windows.Forms.TextBox textDate;
+        private System.Windows.Forms.TextBox textTime;
+        private System.Windows.Forms.TextBox textCategory;
+        private System.Windows.Forms.TextBox textTitle;
     }
 }
