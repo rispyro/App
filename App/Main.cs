@@ -10,6 +10,7 @@ namespace App
         {
             InitializeComponent();
             
+
         }
 
         private void buttonList_Click(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace App
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Add add = new Add();
+            Add add = new Add(this);
             add.Show();
         }
 
@@ -34,12 +35,37 @@ namespace App
         {
             LoadEvents();
         }
-        private void LoadEvents()
+        public void LoadEvents()
         {
             using (EventsContext db = new EventsContext())
             {
-                dataGridView1.DataSource = db.Events.ToList();
+                dataGridEvents.DataSource = db.Events.ToList();
             }
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridEvents.CurrentRow != null)
+            {
+                int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
+
+                using (EventsContext db = new EventsContext())
+                {
+                    Events events = db.Events.Find(id);
+                    if (events != null)
+                    {
+                        db.Events.Remove(events);
+                        db.SaveChanges();
+                        MessageBox.Show("Событие удалено");
+                    }
+                }
+                LoadEvents();
+            }
+            else
+            {
+                MessageBox.Show("Выберите событие");
+            }
+        }
+
     }
 }

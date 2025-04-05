@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listOfPaticipant = new System.Windows.Forms.ListBox();
             this.btnAddEvent = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAddPaticipant = new System.Windows.Forms.Button();
@@ -45,6 +44,8 @@
             this.textTime = new System.Windows.Forms.TextBox();
             this.textCategory = new System.Windows.Forms.TextBox();
             this.textTitle = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -109,15 +110,6 @@
             this.label1.Size = new System.Drawing.Size(73, 16);
             this.label1.TabIndex = 27;
             this.label1.Text = "Название";
-            // 
-            // listOfPaticipant
-            // 
-            this.listOfPaticipant.FormattingEnabled = true;
-            this.listOfPaticipant.ItemHeight = 16;
-            this.listOfPaticipant.Location = new System.Drawing.Point(231, 41);
-            this.listOfPaticipant.Name = "listOfPaticipant";
-            this.listOfPaticipant.Size = new System.Drawing.Size(293, 388);
-            this.listOfPaticipant.TabIndex = 26;
             // 
             // btnAddEvent
             // 
@@ -194,11 +186,22 @@
             this.textTitle.Size = new System.Drawing.Size(114, 22);
             this.textTitle.TabIndex = 17;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(231, 39);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(293, 390);
+            this.dataGridView1.TabIndex = 34;
+            // 
             // Redaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 527);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -206,7 +209,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listOfPaticipant);
             this.Controls.Add(this.btnAddEvent);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddPaticipant);
@@ -219,6 +221,7 @@
             this.Name = "Redaction";
             this.Text = "Редактирование";
             this.Load += new System.EventHandler(this.Redaction_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +236,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listOfPaticipant;
         private System.Windows.Forms.Button btnAddEvent;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAddPaticipant;
@@ -243,5 +245,6 @@
         private System.Windows.Forms.TextBox textTime;
         private System.Windows.Forms.TextBox textCategory;
         private System.Windows.Forms.TextBox textTitle;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

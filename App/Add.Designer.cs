@@ -112,6 +112,7 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Удалить участника";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAddEvent
             // 

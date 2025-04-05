@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridEvents = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -37,18 +37,18 @@
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonRedaction = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEvents)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridEvents
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(365, 476);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridEvents.Location = new System.Drawing.Point(22, 45);
+            this.dataGridEvents.Name = "dataGridEvents";
+            this.dataGridEvents.RowHeadersWidth = 51;
+            this.dataGridEvents.RowTemplate.Height = 24;
+            this.dataGridEvents.Size = new System.Drawing.Size(365, 476);
+            this.dataGridEvents.TabIndex = 0;
             // 
             // label1
             // 
@@ -142,6 +142,7 @@
             this.buttonDelete.TabIndex = 8;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Main
             // 
@@ -156,11 +157,11 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridEvents);
             this.Name = "Main";
             this.Text = "Главная";
             this.Load += new System.EventHandler(this.Main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridEvents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,7 +169,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridEvents;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
