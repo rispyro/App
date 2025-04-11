@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -47,17 +46,8 @@
             this.dataGridEvents.Name = "dataGridEvents";
             this.dataGridEvents.RowHeadersWidth = 51;
             this.dataGridEvents.RowTemplate.Height = 24;
-            this.dataGridEvents.Size = new System.Drawing.Size(365, 476);
+            this.dataGridEvents.Size = new System.Drawing.Size(837, 476);
             this.dataGridEvents.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(626, 264);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Описание";
             // 
             // radioButton1
             // 
@@ -156,7 +146,6 @@
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridEvents);
             this.Name = "Main";
             this.Text = "Главная";
@@ -170,7 +159,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridEvents;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;

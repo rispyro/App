@@ -21,6 +21,11 @@ namespace App
 
         private void btnAddParticipant_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textParticipant.Text))
+            {
+                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (EventsContext db = new EventsContext())
             {
                 Participation newParticipant = new Participation { Name = textParticipant.Text };
@@ -41,6 +46,11 @@ namespace App
 
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textTitle.Text) || string.IsNullOrWhiteSpace(textDescription.Text) || string.IsNullOrWhiteSpace(textDate.Text) ||string.IsNullOrWhiteSpace(textTime.Text) ||string.IsNullOrWhiteSpace(textCategory.Text))
+            {
+                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (EventsContext db = new EventsContext())
             {
                 Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
