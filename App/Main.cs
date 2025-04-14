@@ -21,7 +21,8 @@ namespace App
 
         private void buttonRedaction_Click(object sender, EventArgs e)
         {
-            Redaction redaction = new Redaction();
+            int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
+            Redaction redaction = new Redaction(id, this);
             redaction.Show();
         }
 
@@ -40,6 +41,7 @@ namespace App
             using (EventsContext db = new EventsContext())
             {
                 dataGridEvents.DataSource = db.Events.ToList();
+                dataGridEvents.Columns["EventID"].Visible = false;
             }
         }
 

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace App
 {
-    internal class Events
+    public class Events
     {
         [Key]
         public int EventId { get; set; }

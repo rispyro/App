@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddEvent = new System.Windows.Forms.Button();
+            this.btnUpdateEvent = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAddPaticipant = new System.Windows.Forms.Button();
             this.textParticipant = new System.Windows.Forms.TextBox();
@@ -69,7 +69,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 247);
+            this.label5.Location = new System.Drawing.Point(20, 236);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 16);
             this.label5.TabIndex = 31;
@@ -78,7 +78,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 188);
+            this.label4.Location = new System.Drawing.Point(19, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 16);
             this.label4.TabIndex = 30;
@@ -87,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 128);
+            this.label3.Location = new System.Drawing.Point(19, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 16);
             this.label3.TabIndex = 29;
@@ -96,7 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 73);
+            this.label2.Location = new System.Drawing.Point(228, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 28;
@@ -111,41 +111,43 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Название";
             // 
-            // btnAddEvent
+            // btnUpdateEvent
             // 
-            this.btnAddEvent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddEvent.Location = new System.Drawing.Point(369, 445);
-            this.btnAddEvent.Name = "btnAddEvent";
-            this.btnAddEvent.Size = new System.Drawing.Size(155, 28);
-            this.btnAddEvent.TabIndex = 25;
-            this.btnAddEvent.Text = "Добавить событие";
-            this.btnAddEvent.UseVisualStyleBackColor = false;
+            this.btnUpdateEvent.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnUpdateEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateEvent.Location = new System.Drawing.Point(362, 445);
+            this.btnUpdateEvent.Name = "btnUpdateEvent";
+            this.btnUpdateEvent.Size = new System.Drawing.Size(162, 28);
+            this.btnUpdateEvent.TabIndex = 25;
+            this.btnUpdateEvent.Text = "Обновить событие";
+            this.btnUpdateEvent.UseVisualStyleBackColor = false;
+            this.btnUpdateEvent.Click += new System.EventHandler(this.btnUpdateEvent_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(22, 445);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(155, 28);
+            this.btnDelete.Size = new System.Drawing.Size(162, 28);
             this.btnDelete.TabIndex = 24;
             this.btnDelete.Text = "Удалить участника";
             this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // btnAddPaticipant
             // 
-            this.btnAddPaticipant.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddPaticipant.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnAddPaticipant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddPaticipant.Location = new System.Drawing.Point(22, 401);
             this.btnAddPaticipant.Name = "btnAddPaticipant";
-            this.btnAddPaticipant.Size = new System.Drawing.Size(155, 28);
+            this.btnAddPaticipant.Size = new System.Drawing.Size(162, 28);
             this.btnAddPaticipant.TabIndex = 23;
             this.btnAddPaticipant.Text = "Добавить участника";
             this.btnAddPaticipant.UseVisualStyleBackColor = false;
             // 
             // textParticipant
             // 
+            this.textParticipant.BackColor = System.Drawing.Color.Azure;
             this.textParticipant.Location = new System.Drawing.Point(22, 327);
             this.textParticipant.Name = "textParticipant";
             this.textParticipant.Size = new System.Drawing.Size(114, 22);
@@ -153,34 +155,40 @@
             // 
             // textDescription
             // 
-            this.textDescription.Location = new System.Drawing.Point(22, 92);
+            this.textDescription.BackColor = System.Drawing.Color.Azure;
+            this.textDescription.Location = new System.Drawing.Point(231, 255);
+            this.textDescription.Multiline = true;
             this.textDescription.Name = "textDescription";
-            this.textDescription.Size = new System.Drawing.Size(114, 22);
+            this.textDescription.Size = new System.Drawing.Size(293, 174);
             this.textDescription.TabIndex = 21;
             // 
             // textDate
             // 
-            this.textDate.Location = new System.Drawing.Point(22, 147);
+            this.textDate.BackColor = System.Drawing.Color.Azure;
+            this.textDate.Location = new System.Drawing.Point(22, 109);
             this.textDate.Name = "textDate";
             this.textDate.Size = new System.Drawing.Size(114, 22);
             this.textDate.TabIndex = 20;
             // 
             // textTime
             // 
-            this.textTime.Location = new System.Drawing.Point(22, 207);
+            this.textTime.BackColor = System.Drawing.Color.Azure;
+            this.textTime.Location = new System.Drawing.Point(22, 185);
             this.textTime.Name = "textTime";
             this.textTime.Size = new System.Drawing.Size(114, 22);
             this.textTime.TabIndex = 19;
             // 
             // textCategory
             // 
-            this.textCategory.Location = new System.Drawing.Point(22, 266);
+            this.textCategory.BackColor = System.Drawing.Color.Azure;
+            this.textCategory.Location = new System.Drawing.Point(22, 255);
             this.textCategory.Name = "textCategory";
             this.textCategory.Size = new System.Drawing.Size(114, 22);
             this.textCategory.TabIndex = 18;
             // 
             // textTitle
             // 
+            this.textTitle.BackColor = System.Drawing.Color.Azure;
             this.textTitle.Location = new System.Drawing.Point(22, 41);
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(114, 22);
@@ -188,18 +196,20 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(231, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(293, 390);
+            this.dataGridView1.Size = new System.Drawing.Size(293, 168);
             this.dataGridView1.TabIndex = 34;
             // 
             // Redaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(591, 527);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label7);
@@ -209,7 +219,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAddEvent);
+            this.Controls.Add(this.btnUpdateEvent);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddPaticipant);
             this.Controls.Add(this.textParticipant);
@@ -218,8 +228,10 @@
             this.Controls.Add(this.textTime);
             this.Controls.Add(this.textCategory);
             this.Controls.Add(this.textTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Redaction";
-            this.Text = "Редактирование";
+            this.Text = "Редактирование события";
             this.Load += new System.EventHandler(this.Redaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -236,7 +248,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAddEvent;
+        private System.Windows.Forms.Button btnUpdateEvent;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAddPaticipant;
         private System.Windows.Forms.TextBox textParticipant;

@@ -31,7 +31,6 @@
             this.textTitle = new System.Windows.Forms.TextBox();
             this.textCategory = new System.Windows.Forms.TextBox();
             this.textTime = new System.Windows.Forms.TextBox();
-            this.textDate = new System.Windows.Forms.TextBox();
             this.textDescription = new System.Windows.Forms.TextBox();
             this.textParticipant = new System.Windows.Forms.TextBox();
             this.btnAddParticipant = new System.Windows.Forms.Button();
@@ -45,11 +44,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridParticipant = new System.Windows.Forms.DataGridView();
+            this.textDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).BeginInit();
             this.SuspendLayout();
             // 
             // textTitle
             // 
+            this.textTitle.BackColor = System.Drawing.Color.Azure;
             this.textTitle.Location = new System.Drawing.Point(28, 40);
             this.textTitle.Name = "textTitle";
             this.textTitle.Size = new System.Drawing.Size(114, 22);
@@ -57,34 +58,32 @@
             // 
             // textCategory
             // 
-            this.textCategory.Location = new System.Drawing.Point(28, 265);
+            this.textCategory.BackColor = System.Drawing.Color.Azure;
+            this.textCategory.Location = new System.Drawing.Point(28, 256);
             this.textCategory.Name = "textCategory";
             this.textCategory.Size = new System.Drawing.Size(114, 22);
             this.textCategory.TabIndex = 1;
             // 
             // textTime
             // 
-            this.textTime.Location = new System.Drawing.Point(28, 206);
+            this.textTime.BackColor = System.Drawing.Color.Azure;
+            this.textTime.Location = new System.Drawing.Point(28, 183);
             this.textTime.Name = "textTime";
             this.textTime.Size = new System.Drawing.Size(114, 22);
             this.textTime.TabIndex = 2;
             // 
-            // textDate
-            // 
-            this.textDate.Location = new System.Drawing.Point(28, 146);
-            this.textDate.Name = "textDate";
-            this.textDate.Size = new System.Drawing.Size(114, 22);
-            this.textDate.TabIndex = 3;
-            // 
             // textDescription
             // 
-            this.textDescription.Location = new System.Drawing.Point(28, 91);
+            this.textDescription.BackColor = System.Drawing.Color.Azure;
+            this.textDescription.Location = new System.Drawing.Point(237, 256);
+            this.textDescription.Multiline = true;
             this.textDescription.Name = "textDescription";
-            this.textDescription.Size = new System.Drawing.Size(114, 22);
+            this.textDescription.Size = new System.Drawing.Size(293, 170);
             this.textDescription.TabIndex = 4;
             // 
             // textParticipant
             // 
+            this.textParticipant.BackColor = System.Drawing.Color.Azure;
             this.textParticipant.Location = new System.Drawing.Point(28, 326);
             this.textParticipant.Name = "textParticipant";
             this.textParticipant.Size = new System.Drawing.Size(114, 22);
@@ -92,11 +91,11 @@
             // 
             // btnAddParticipant
             // 
-            this.btnAddParticipant.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddParticipant.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnAddParticipant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddParticipant.Location = new System.Drawing.Point(28, 393);
+            this.btnAddParticipant.Location = new System.Drawing.Point(28, 398);
             this.btnAddParticipant.Name = "btnAddParticipant";
-            this.btnAddParticipant.Size = new System.Drawing.Size(155, 28);
+            this.btnAddParticipant.Size = new System.Drawing.Size(166, 28);
             this.btnAddParticipant.TabIndex = 6;
             this.btnAddParticipant.Text = "Добавить участника";
             this.btnAddParticipant.UseVisualStyleBackColor = false;
@@ -104,11 +103,11 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDelete.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Location = new System.Drawing.Point(28, 444);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(155, 28);
+            this.btnDelete.Size = new System.Drawing.Size(166, 28);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Удалить участника";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -116,11 +115,11 @@
             // 
             // btnAddEvent
             // 
-            this.btnAddEvent.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddEvent.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddEvent.Location = new System.Drawing.Point(373, 444);
+            this.btnAddEvent.Location = new System.Drawing.Point(364, 444);
             this.btnAddEvent.Name = "btnAddEvent";
-            this.btnAddEvent.Size = new System.Drawing.Size(157, 28);
+            this.btnAddEvent.Size = new System.Drawing.Size(166, 28);
             this.btnAddEvent.TabIndex = 8;
             this.btnAddEvent.Text = "Добавить событие";
             this.btnAddEvent.UseVisualStyleBackColor = false;
@@ -138,7 +137,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 72);
+            this.label2.Location = new System.Drawing.Point(234, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 11;
@@ -147,7 +146,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 127);
+            this.label3.Location = new System.Drawing.Point(25, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 16);
             this.label3.TabIndex = 12;
@@ -156,7 +155,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 187);
+            this.label4.Location = new System.Drawing.Point(28, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 16);
             this.label4.TabIndex = 13;
@@ -165,7 +164,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 246);
+            this.label5.Location = new System.Drawing.Point(28, 237);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 16);
             this.label5.TabIndex = 14;
@@ -191,19 +190,31 @@
             // 
             // dataGridParticipant
             // 
+            this.dataGridParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridParticipant.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridParticipant.Location = new System.Drawing.Point(237, 40);
             this.dataGridParticipant.Name = "dataGridParticipant";
             this.dataGridParticipant.RowHeadersWidth = 51;
             this.dataGridParticipant.RowTemplate.Height = 24;
-            this.dataGridParticipant.Size = new System.Drawing.Size(293, 388);
+            this.dataGridParticipant.Size = new System.Drawing.Size(293, 165);
             this.dataGridParticipant.TabIndex = 17;
+            // 
+            // textDate
+            // 
+            this.textDate.BackColor = System.Drawing.Color.Azure;
+            this.textDate.Location = new System.Drawing.Point(28, 111);
+            this.textDate.Name = "textDate";
+            this.textDate.Size = new System.Drawing.Size(114, 22);
+            this.textDate.TabIndex = 18;
             // 
             // Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(591, 527);
+            this.Controls.Add(this.textDate);
             this.Controls.Add(this.dataGridParticipant);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -217,12 +228,14 @@
             this.Controls.Add(this.btnAddParticipant);
             this.Controls.Add(this.textParticipant);
             this.Controls.Add(this.textDescription);
-            this.Controls.Add(this.textDate);
             this.Controls.Add(this.textTime);
             this.Controls.Add(this.textCategory);
             this.Controls.Add(this.textTitle);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Add";
-            this.Text = "Добавление";
+            this.Text = "Добавление события";
             this.Load += new System.EventHandler(this.Add_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).EndInit();
             this.ResumeLayout(false);
@@ -235,7 +248,6 @@
         private System.Windows.Forms.TextBox textTitle;
         private System.Windows.Forms.TextBox textCategory;
         private System.Windows.Forms.TextBox textTime;
-        private System.Windows.Forms.TextBox textDate;
         private System.Windows.Forms.TextBox textDescription;
         private System.Windows.Forms.TextBox textParticipant;
         private System.Windows.Forms.Button btnAddParticipant;
@@ -249,5 +261,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridParticipant;
+        private System.Windows.Forms.TextBox textDate;
     }
 }

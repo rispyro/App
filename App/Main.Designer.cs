@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -41,7 +42,19 @@
             // 
             // dataGridEvents
             // 
+            this.dataGridEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridEvents.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridEvents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridEvents.GridColor = System.Drawing.Color.Azure;
             this.dataGridEvents.Location = new System.Drawing.Point(22, 45);
             this.dataGridEvents.Name = "dataGridEvents";
             this.dataGridEvents.RowHeadersWidth = 51;
@@ -86,7 +99,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonAdd.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonAdd.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -100,7 +113,7 @@
             // 
             // buttonList
             // 
-            this.buttonList.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonList.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonList.Location = new System.Drawing.Point(442, 544);
             this.buttonList.Name = "buttonList";
@@ -112,8 +125,9 @@
             // 
             // buttonRedaction
             // 
-            this.buttonRedaction.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonRedaction.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonRedaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRedaction.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRedaction.Location = new System.Drawing.Point(629, 544);
             this.buttonRedaction.Name = "buttonRedaction";
             this.buttonRedaction.Size = new System.Drawing.Size(127, 28);
@@ -124,7 +138,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonDelete.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelete.Location = new System.Drawing.Point(779, 544);
             this.buttonDelete.Name = "buttonDelete";
@@ -138,7 +152,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 604);
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(885, 604);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonRedaction);
             this.Controls.Add(this.buttonList);
@@ -147,6 +162,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.dataGridEvents);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "Main";
             this.Text = "Главная";
             this.Load += new System.EventHandler(this.Main_Load);

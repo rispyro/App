@@ -11,7 +11,11 @@ namespace App
         {
             InitializeComponent();
             Main = main;
-            
+            using (EventsContext b = new EventsContext())
+            {
+                b.Database.Delete();
+            }
+
         }
 
         private void Add_Load(object sender, EventArgs e)
@@ -41,6 +45,7 @@ namespace App
             using (EventsContext db = new EventsContext())
             {
                 dataGridParticipant.DataSource = db.Participation.ToList();
+                dataGridParticipant.Columns["ParticipationID"].Visible = false;
             }
         }
 
@@ -54,6 +59,11 @@ namespace App
             using (EventsContext db = new EventsContext())
             {
                 Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
+                //DataGridViewRowCollection participants = dataGridParticipant.Rows;
+                //for (int i = 0; i < participants.Count; i++)
+                //{
+                    
+                //}
                 db.Events.Add(newEvent);
                 db.SaveChanges();
                 MessageBox.Show("Событие добавлено");
