@@ -56,42 +56,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add.cs">
+    <Compile Include="forms\Add.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add.Designer.cs">
+    <Compile Include="forms\Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Events.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="classes\Events.cs" />
+    <Compile Include="forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Participants.cs">
+    <Compile Include="forms\Participants.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Participants.Designer.cs">
+    <Compile Include="forms\Participants.Designer.cs">
       <DependentUpon>Participants.cs</DependentUpon>
     </Compile>
-    <Compile Include="Participation.cs" />
+    <Compile Include="classes\Participation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Redaction.cs">
+    <Compile Include="forms\Redaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Redaction.Designer.cs">
+    <Compile Include="forms\Redaction.Designer.cs">
       <DependentUpon>Redaction.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Add.resx">
+    <EmbeddedResource Include="forms\Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Participants.resx">
+    <EmbeddedResource Include="forms\Participants.resx">
       <DependentUpon>Participants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -103,7 +103,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Redaction.resx">
+    <EmbeddedResource Include="forms\Redaction.resx">
       <DependentUpon>Redaction.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

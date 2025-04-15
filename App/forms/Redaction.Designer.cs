@@ -44,8 +44,8 @@
             this.textTime = new System.Windows.Forms.TextBox();
             this.textCategory = new System.Windows.Forms.TextBox();
             this.textTitle = new System.Windows.Forms.TextBox();
-            this.dataGridParticipant = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).BeginInit();
+            this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -133,6 +133,7 @@
             this.btnDelete.TabIndex = 24;
             this.btnDelete.Text = "Удалить участника";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAddPaticipant
             // 
@@ -144,6 +145,7 @@
             this.btnAddPaticipant.TabIndex = 23;
             this.btnAddPaticipant.Text = "Добавить участника";
             this.btnAddPaticipant.UseVisualStyleBackColor = false;
+            this.btnAddPaticipant.Click += new System.EventHandler(this.btnAddPaticipant_Click);
             // 
             // textParticipant
             // 
@@ -194,16 +196,17 @@
             this.textTitle.Size = new System.Drawing.Size(114, 22);
             this.textTitle.TabIndex = 17;
             // 
-            // dataGridParticipant
+            // dataGridViewParticipant
             // 
-            this.dataGridParticipant.BackgroundColor = System.Drawing.Color.Azure;
-            this.dataGridParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridParticipant.Location = new System.Drawing.Point(231, 39);
-            this.dataGridParticipant.Name = "dataGridParticipant";
-            this.dataGridParticipant.RowHeadersWidth = 51;
-            this.dataGridParticipant.RowTemplate.Height = 24;
-            this.dataGridParticipant.Size = new System.Drawing.Size(293, 168);
-            this.dataGridParticipant.TabIndex = 34;
+            this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewParticipant.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewParticipant.Location = new System.Drawing.Point(231, 39);
+            this.dataGridViewParticipant.Name = "dataGridViewParticipant";
+            this.dataGridViewParticipant.RowHeadersWidth = 51;
+            this.dataGridViewParticipant.RowTemplate.Height = 24;
+            this.dataGridViewParticipant.Size = new System.Drawing.Size(293, 168);
+            this.dataGridViewParticipant.TabIndex = 34;
             // 
             // Redaction
             // 
@@ -211,7 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(591, 527);
-            this.Controls.Add(this.dataGridParticipant);
+            this.Controls.Add(this.dataGridViewParticipant);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -233,7 +236,7 @@
             this.Name = "Redaction";
             this.Text = "Редактирование события";
             this.Load += new System.EventHandler(this.Redaction_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,6 +260,6 @@
         private System.Windows.Forms.TextBox textTime;
         private System.Windows.Forms.TextBox textCategory;
         private System.Windows.Forms.TextBox textTitle;
-        private System.Windows.Forms.DataGridView dataGridParticipant;
+        private System.Windows.Forms.DataGridView dataGridViewParticipant;
     }
 }

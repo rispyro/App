@@ -9,13 +9,13 @@ namespace App
         public Main()
         {
             InitializeComponent();
-            
 
         }
 
         private void buttonList_Click(object sender, EventArgs e)
         {
-            Participants listForm = new Participants();
+            int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
+            Participants listForm = new Participants(id);
             listForm.Show();
         }
 
@@ -42,6 +42,7 @@ namespace App
             {
                 dataGridEvents.DataSource = db.Events.ToList();
                 dataGridEvents.Columns["EventID"].Visible = false;
+                dataGridEvents.Columns["Description"].Visible = false;
             }
         }
 
@@ -68,6 +69,6 @@ namespace App
                 MessageBox.Show("Выберите событие");
             }
         }
-
+        
     }
 }

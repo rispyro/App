@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
+            this.textDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -44,24 +44,25 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Список участников";
             // 
-            // dataGridView1
+            // dataGridViewParticipant
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Azure;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(330, 243);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewParticipant.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewParticipant.Location = new System.Drawing.Point(32, 47);
+            this.dataGridViewParticipant.Name = "dataGridViewParticipant";
+            this.dataGridViewParticipant.RowHeadersWidth = 51;
+            this.dataGridViewParticipant.RowTemplate.Height = 24;
+            this.dataGridViewParticipant.Size = new System.Drawing.Size(330, 243);
+            this.dataGridViewParticipant.TabIndex = 3;
             // 
-            // textBox1
+            // textDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(32, 316);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(330, 230);
-            this.textBox1.TabIndex = 4;
+            this.textDescription.Location = new System.Drawing.Point(32, 316);
+            this.textDescription.Multiline = true;
+            this.textDescription.Name = "textDescription";
+            this.textDescription.Size = new System.Drawing.Size(330, 230);
+            this.textDescription.TabIndex = 4;
             // 
             // label2
             // 
@@ -79,15 +80,15 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(401, 569);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.textDescription);
+            this.Controls.Add(this.dataGridViewParticipant);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Participants";
             this.Text = "Список участников";
             this.Load += new System.EventHandler(this.Participants_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,8 +96,8 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridViewParticipant;
+        private System.Windows.Forms.TextBox textDescription;
         private System.Windows.Forms.Label label2;
     }
 }

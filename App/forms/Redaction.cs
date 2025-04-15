@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace App
     {
         public int ID;
         public Main Main;
+        private List<Participation> participations = new List<Participation>();
+
         public Redaction(int id, Main main)
         {
             ID = id;
@@ -26,8 +29,16 @@ namespace App
                 textDate.Text = events.Date;
                 textTime.Text = events.Time;
                 textCategory.Text = events.Category;
-                dataGridParticipant.DataSource = db.Participation.ToList();
+                dataGridViewParticipant.DataSource = db.Participation.ToList();
                 db.SaveChanges();
+                foreach (Participation participant in db.Participation.ToList())
+                {
+                    if (participant.EventId == ID)
+                    {
+                        participations.Add(participant);
+                    }
+                }
+                LoadParticipation();
             }
         }
 
@@ -43,10 +54,39 @@ namespace App
                 Events updateEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
                 db.Events.Remove(db.Events.Find(ID));
                 db.Events.Add(updateEvent);
+
                 db.SaveChanges();
-                MessageBox.Show("Событие отредактировано");
             }
+            MessageBox.Show("Информация о событии обновлена");
             Main.LoadEvents();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnAddPaticipant_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textParticipant.Text))
+            {
+                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            using (EventsContext db = new EventsContext())
+            {
+                Participation participation = new Participation() { Name = textParticipant.Text, EventId=ID };
+                participations.Add(participation);
+                db.SaveChanges();
+                LoadParticipation();
+                Main.LoadEvents();
+            }
+        }
+        public void LoadParticipation()
+        {
+            dataGridViewParticipant.DataSource = participations.ToList();
+            dataGridViewParticipant.Columns["ParticipationID"].Visible = false;
+            dataGridViewParticipant.Columns["EventID"].Visible = false;
         }
     }
 }

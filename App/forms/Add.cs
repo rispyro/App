@@ -13,7 +13,6 @@ namespace App
         {
             InitializeComponent();
             Main = main;
-
         }
 
         private void Add_Load(object sender, EventArgs e)
