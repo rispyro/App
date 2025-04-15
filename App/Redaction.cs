@@ -41,9 +41,9 @@ namespace App
                 Main.LoadEvents();
                 MessageBox.Show("Событие отредактировано");
             }
-            catch
+            catch (ArgumentException ae)
             {
-                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }            
         }
         public void UpdateEvent(Events updateEvent, int id)

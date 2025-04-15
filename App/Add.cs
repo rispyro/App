@@ -34,9 +34,9 @@ namespace App
                 
                 MessageBox.Show("Пользователь добавлен");
             }
-            catch
+            catch (ArgumentException ae)
             {
-                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }
@@ -66,9 +66,9 @@ namespace App
                 Main.LoadEvents();
                 MessageBox.Show("Событие добавлено");
             }
-            catch
+            catch (ArgumentException ae)
             {
-                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
