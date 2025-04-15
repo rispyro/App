@@ -44,8 +44,8 @@
             this.textTime = new System.Windows.Forms.TextBox();
             this.textCategory = new System.Windows.Forms.TextBox();
             this.textTitle = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridParticipant = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -194,16 +194,16 @@
             this.textTitle.Size = new System.Drawing.Size(114, 22);
             this.textTitle.TabIndex = 17;
             // 
-            // dataGridView1
+            // dataGridParticipant
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Azure;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(231, 39);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(293, 168);
-            this.dataGridView1.TabIndex = 34;
+            this.dataGridParticipant.BackgroundColor = System.Drawing.Color.Azure;
+            this.dataGridParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridParticipant.Location = new System.Drawing.Point(231, 39);
+            this.dataGridParticipant.Name = "dataGridParticipant";
+            this.dataGridParticipant.RowHeadersWidth = 51;
+            this.dataGridParticipant.RowTemplate.Height = 24;
+            this.dataGridParticipant.Size = new System.Drawing.Size(293, 168);
+            this.dataGridParticipant.TabIndex = 34;
             // 
             // Redaction
             // 
@@ -211,7 +211,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(591, 527);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridParticipant);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -233,7 +233,7 @@
             this.Name = "Redaction";
             this.Text = "Редактирование события";
             this.Load += new System.EventHandler(this.Redaction_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,6 +257,6 @@
         private System.Windows.Forms.TextBox textTime;
         private System.Windows.Forms.TextBox textCategory;
         private System.Windows.Forms.TextBox textTitle;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridParticipant;
     }
 }

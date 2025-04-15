@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,14 +8,11 @@ namespace App
     public partial class Add : Form
     {
         private Main Main;
+        private List<Participation> participations = new List<Participation>();
         public Add(Main main)
         {
             InitializeComponent();
             Main = main;
-            using (EventsContext b = new EventsContext())
-            {
-                b.Database.Delete();
-            }
 
         }
 
@@ -33,7 +31,7 @@ namespace App
             using (EventsContext db = new EventsContext())
             {
                 Participation newParticipant = new Participation { Name = textParticipant.Text };
-                db.Participation.Add(newParticipant);
+                participations.Add(newParticipant);
                 db.SaveChanges();
                 LoadParticipation();
                 MessageBox.Show("Пользователь добавлен");
@@ -42,11 +40,9 @@ namespace App
         }
         private void LoadParticipation()
         {
-            using (EventsContext db = new EventsContext())
-            {
-                dataGridParticipant.DataSource = db.Participation.ToList();
-                dataGridParticipant.Columns["ParticipationID"].Visible = false;
-            }
+            dataGridParticipant.DataSource = participations.ToList();
+            dataGridParticipant.Columns["ParticipationID"].Visible = false;
+            dataGridParticipant.Columns["EventID"].Visible = false;
         }
 
         private void btnAddEvent_Click(object sender, EventArgs e)
@@ -59,14 +55,19 @@ namespace App
             using (EventsContext db = new EventsContext())
             {
                 Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
-                //DataGridViewRowCollection participants = dataGridParticipant.Rows;
-                //for (int i = 0; i < participants.Count; i++)
-                //{
-                    
-                //}
+
                 db.Events.Add(newEvent);
                 db.SaveChanges();
                 MessageBox.Show("Событие добавлено");
+
+
+                foreach (var participant in participations)
+                {
+                    participant.EventId = newEvent.EventId;
+                    db.Participation.Add(participant);
+                }
+
+                db.SaveChanges();
             }
             Main.LoadEvents();
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace App
@@ -25,7 +26,7 @@ namespace App
                 textDate.Text = events.Date;
                 textTime.Text = events.Time;
                 textCategory.Text = events.Category;
-                db.Events.Remove(events);
+                dataGridParticipant.DataSource = db.Participation.ToList();
                 db.SaveChanges();
             }
         }
@@ -40,6 +41,7 @@ namespace App
             using (EventsContext db = new EventsContext())
             {
                 Events updateEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
+                db.Events.Remove(db.Events.Find(ID));
                 db.Events.Add(updateEvent);
                 db.SaveChanges();
                 MessageBox.Show("Событие отредактировано");
