@@ -9,8 +9,11 @@ namespace App
         public Main()
         {
             InitializeComponent();
-            
 
+            //using (EventsContext db = new EventsContext())
+            //{
+            //    db.Database.Delete();
+            //}
         }
 
         private void buttonList_Click(object sender, EventArgs e)
@@ -50,18 +53,13 @@ namespace App
             if (dataGridEvents.CurrentRow != null)
             {
                 int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
-
-                using (EventsContext db = new EventsContext())
-                {
-                    Events events = db.Events.Find(id);
-                    if (events != null)
-                    {
-                        db.Events.Remove(events);
-                        db.SaveChanges();
-                        MessageBox.Show("Событие удалено");
-                    }
-                }
+                DeleteEvent(id);                
+                MessageBox.Show("Событие удалено");
                 LoadEvents();
+            }
+            else if (dataGridEvents.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавьте события");
             }
             else
             {
@@ -69,5 +67,21 @@ namespace App
             }
         }
 
+        public void DeleteEvent(int id)
+        {
+            using (EventsContext db = new EventsContext())
+            {
+                Events events = db.Events.Find(id);
+                if (events != null)
+                {
+                    db.Events.Remove(events);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("События не существует!");
+                }
+            }
+        }
     }
 }

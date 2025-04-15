@@ -10,8 +10,8 @@ namespace App
         public Main Main;
         public Redaction(int id, Main main)
         {
-            ID = id;
             InitializeComponent();
+            ID = id;
             Main = main;
         }
 
@@ -33,20 +33,32 @@ namespace App
 
         private void btnUpdateEvent_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textTitle.Text) || string.IsNullOrWhiteSpace(textDescription.Text) || string.IsNullOrWhiteSpace(textDate.Text) || string.IsNullOrWhiteSpace(textTime.Text) || string.IsNullOrWhiteSpace(textCategory.Text))
+            try
+            {
+                Events updateEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
+                UpdateEvent(updateEvent, ID);
+
+                Main.LoadEvents();
+                MessageBox.Show("Событие отредактировано");
+            }
+            catch
             {
                 MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+            }            
+        }
+        public void UpdateEvent(Events updateEvent, int id)
+        {
+            if (string.IsNullOrWhiteSpace(textTitle.Text) || string.IsNullOrWhiteSpace(textDescription.Text) || string.IsNullOrWhiteSpace(textDate.Text) || string.IsNullOrWhiteSpace(textTime.Text) || string.IsNullOrWhiteSpace(textCategory.Text))
+            {
+                throw new ArgumentException("Не все поля леса!");
             }
             using (EventsContext db = new EventsContext())
             {
-                Events updateEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
-                db.Events.Remove(db.Events.Find(ID));
+                db.Events.Remove(db.Events.Find(id));
                 db.Events.Add(updateEvent);
                 db.SaveChanges();
-                MessageBox.Show("Событие отредактировано");
+                
             }
-            Main.LoadEvents();
         }
     }
 }

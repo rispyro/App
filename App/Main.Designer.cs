@@ -174,7 +174,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridEvents;
+        public System.Windows.Forms.DataGridView dataGridEvents;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
