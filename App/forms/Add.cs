@@ -7,12 +7,17 @@ namespace App
 {
     public partial class Add : Form
     {
-        private Main Main;
+        public Main Main;
         private List<Participation> participations = new List<Participation>();
         public Add(Main main)
         {
             InitializeComponent();
             Main = main;
+
+            //using (EventsContext db = new EventsContext())
+            //{
+            //    db.Database.Delete();
+            //}
         }
 
         private void Add_Load(object sender, EventArgs e)
@@ -22,20 +27,28 @@ namespace App
 
         private void btnAddParticipant_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textParticipant.Text))
-            {
-                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            using (EventsContext db = new EventsContext())
-            {
+            try
+            {                
                 Participation newParticipant = new Participation { Name = textParticipant.Text };
-                participations.Add(newParticipant);
-                db.SaveChanges();
-                LoadParticipation();
+                AddNewParticipation(newParticipant);
+                
                 MessageBox.Show("Пользователь добавлен");
-
             }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+        }
+        public void AddNewParticipation(Participation participant)
+        {
+            if (string.IsNullOrEmpty(participant.Name))
+            {
+                throw new ArgumentException("Не все поля заполнены!");
+            }
+
+            participations.Add(participant);
+            LoadParticipation();
         }
         private void LoadParticipation()
         {
@@ -46,29 +59,37 @@ namespace App
 
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textTitle.Text) || string.IsNullOrWhiteSpace(textDescription.Text) || string.IsNullOrWhiteSpace(textDate.Text) ||string.IsNullOrWhiteSpace(textTime.Text) ||string.IsNullOrWhiteSpace(textCategory.Text))
+            try
             {
-                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
+                AddNewEvent(newEvent);
+                Main.LoadEvents();
+                MessageBox.Show("Событие добавлено");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void AddNewEvent(Events newEvent)
+        {
+            if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) || string.IsNullOrWhiteSpace(newEvent.Date) || string.IsNullOrWhiteSpace(newEvent.Time) || string.IsNullOrWhiteSpace(newEvent.Category))
+            {
+                throw new ArgumentException("Не все поля поля!");
             }
             using (EventsContext db = new EventsContext())
             {
-                Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
-
                 db.Events.Add(newEvent);
-                db.SaveChanges();
-                MessageBox.Show("Событие добавлено");
-
+                db.SaveChanges();                
 
                 foreach (var participant in participations)
                 {
                     participant.EventId = newEvent.EventId;
                     db.Participation.Add(participant);
                 }
-
                 db.SaveChanges();
             }
-            Main.LoadEvents();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -76,22 +97,26 @@ namespace App
             if (dataGridParticipant.CurrentRow != null)
             {
                 int id = (int)dataGridParticipant.CurrentRow.Cells[0].Value;
-
-                using (EventsContext db = new EventsContext())
-                {
-                    Participation participant = db.Participation.Find(id);
-                    if (participant != null)
-                    {
-                        db.Participation.Remove(participant);
-                        db.SaveChanges();
-                        MessageBox.Show("Участник удалён");
-                    }
-                }
+                DeletePart(id);
                 LoadParticipation();
+                MessageBox.Show("Участник удалён");
             }
             else
             {
                 MessageBox.Show("Выберите участника");
+            }
+        }
+
+        public void DeletePart(int id)
+        {
+            using (EventsContext db = new EventsContext())
+            {
+                Participation participant = db.Participation.Find(id);
+                if (participant != null)
+                {
+                    db.Participation.Remove(participant);
+                    db.SaveChanges();                    
+                }
             }
         }
     }
