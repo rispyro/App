@@ -70,11 +70,11 @@
     <Compile Include="forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\Participants.cs">
+    <Compile Include="forms\MoreDetailed.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\Participants.Designer.cs">
-      <DependentUpon>Participants.cs</DependentUpon>
+    <Compile Include="forms\MoreDetailed.Designer.cs">
+      <DependentUpon>MoreDetailed.cs</DependentUpon>
     </Compile>
     <Compile Include="classes\Participation.cs" />
     <Compile Include="Program.cs" />
@@ -91,8 +91,8 @@
     <EmbeddedResource Include="forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\Participants.resx">
-      <DependentUpon>Participants.cs</DependentUpon>
+    <EmbeddedResource Include="forms\MoreDetailed.resx">
+      <DependentUpon>MoreDetailed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

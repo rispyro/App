@@ -7,8 +7,20 @@ namespace App
 {
     public partial class Add : Form
     {
+        /// <summary>
+        /// Ссылка на главное окно приложения
+        /// </summary>
         public Main Main;
+
+        /// <summary>
+        /// Список участников текущего события
+        /// </summary>
         private List<Participation> participations = new List<Participation>();
+
+        /// <summary>
+        /// Конструктор формы добавления, принимает главное окно
+        /// </summary>
+        /// <param name="main">Главная форма</param>
         public Add(Main main)
         {
             InitializeComponent();
@@ -20,26 +32,36 @@ namespace App
             //}
         }
 
+        /// <summary>
+        /// Обработчик загрузки формы
+        /// </summary>
         private void Add_Load(object sender, EventArgs e)
         {
             LoadParticipation();
         }
 
+        /// <summary>
+        /// Обработчик кнопки добавления участника, добавляет участника в БД
+        /// </summary>
         private void btnAddParticipant_Click(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 Participation newParticipant = new Participation { Name = textParticipant.Text };
                 AddNewParticipation(newParticipant);
-                
+
                 MessageBox.Show("Пользователь добавлен");
             }
             catch (ArgumentException ae)
             {
                 MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
+
+        /// <summary>
+        /// Добавляет нового участника в список
+        /// </summary>
+        /// <param name="participant">Объект участника</param>
         public void AddNewParticipation(Participation participant)
         {
             if (string.IsNullOrEmpty(participant.Name))
@@ -50,6 +72,10 @@ namespace App
             participations.Add(participant);
             LoadParticipation();
         }
+
+        /// <summary>
+        /// Загружает текущих участников в таблицу
+        /// </summary>
         private void LoadParticipation()
         {
             dataGridParticipant.DataSource = participations.ToList();
@@ -57,11 +83,22 @@ namespace App
             dataGridParticipant.Columns["EventID"].Visible = false;
         }
 
+        /// <summary>
+        /// Обработчик кнопки добавления события
+        /// </summary>
         private void btnAddEvent_Click(object sender, EventArgs e)
         {
             try
             {
-                Events newEvent = new Events() { Title = textTitle.Text, Description = textDescription.Text, Date = textDate.Text, Time = textTime.Text, Category = textCategory.Text };
+                Events newEvent = new Events()
+                {
+                    Title = textTitle.Text,
+                    Description = textDescription.Text,
+                    Date = textDate.Text,
+                    Time = textTime.Text,
+                    Category = textCategory.Text
+                };
+
                 AddNewEvent(newEvent);
                 Main.LoadEvents();
                 MessageBox.Show("Событие добавлено");
@@ -72,41 +109,58 @@ namespace App
             }
         }
 
+        /// <summary>
+        /// Добавляет новое событие и сохраняет участников, связанных с ним
+        /// </summary>
+        /// <param name="newEvent">Объект события</param>
         public void AddNewEvent(Events newEvent)
         {
-            if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) || string.IsNullOrWhiteSpace(newEvent.Date) || string.IsNullOrWhiteSpace(newEvent.Time) || string.IsNullOrWhiteSpace(newEvent.Category))
+            if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) ||
+                string.IsNullOrWhiteSpace(newEvent.Date) || string.IsNullOrWhiteSpace(newEvent.Time) ||
+                string.IsNullOrWhiteSpace(newEvent.Category))
             {
                 throw new ArgumentException("Не все поля поля!");
             }
+
             using (EventsContext db = new EventsContext())
             {
                 db.Events.Add(newEvent);
-                db.SaveChanges();                
+                db.SaveChanges();
 
                 foreach (var participant in participations)
                 {
                     participant.EventId = newEvent.EventId;
                     db.Participation.Add(participant);
                 }
+
                 db.SaveChanges();
             }
         }
 
+        /// <summary>
+        /// Обработчик кнопки удаления участника
+        /// </summary>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridParticipant.CurrentRow != null)
+            if (dataGridParticipant.CurrentRow == null)
             {
-                int id = (int)dataGridParticipant.CurrentRow.Cells[0].Value;
-                DeletePart(id);
+                MessageBox.Show("Выберите участника для удаления");
+                return;
+            }
+
+            int index = dataGridParticipant.CurrentRow.Index;
+            if (index >= 0 && index < participations.Count)
+            {
+                participations.RemoveAt(index);
                 LoadParticipation();
                 MessageBox.Show("Участник удалён");
             }
-            else
-            {
-                MessageBox.Show("Выберите участника");
-            }
         }
 
+        /// <summary>
+        /// Удаляет участника из БД по его ID
+        /// </summary>
+        /// <param name="id">Идентификатор участника</param>
         public void DeletePart(int id)
         {
             using (EventsContext db = new EventsContext())
@@ -115,7 +169,7 @@ namespace App
                 if (participant != null)
                 {
                     db.Participation.Remove(participant);
-                    db.SaveChanges();                    
+                    db.SaveChanges();
                 }
             }
         }

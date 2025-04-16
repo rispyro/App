@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -46,14 +46,14 @@
             this.dataGridEvents.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridEvents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridEvents.GridColor = System.Drawing.Color.Azure;
             this.dataGridEvents.Location = new System.Drawing.Point(22, 45);
             this.dataGridEvents.Name = "dataGridEvents";
@@ -115,11 +115,11 @@
             // 
             this.buttonList.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.buttonList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonList.Location = new System.Drawing.Point(442, 544);
+            this.buttonList.Location = new System.Drawing.Point(473, 544);
             this.buttonList.Name = "buttonList";
-            this.buttonList.Size = new System.Drawing.Size(159, 28);
+            this.buttonList.Size = new System.Drawing.Size(127, 28);
             this.buttonList.TabIndex = 6;
-            this.buttonList.Text = "Список участников";
+            this.buttonList.Text = "Подробнее";
             this.buttonList.UseVisualStyleBackColor = false;
             this.buttonList.Click += new System.EventHandler(this.buttonList_Click);
             // 

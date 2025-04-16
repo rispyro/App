@@ -86,7 +86,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Participants";
-            this.Text = "Список участников";
+            this.Text = "Подробнее";
             this.Load += new System.EventHandler(this.Participants_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).EndInit();
             this.ResumeLayout(false);
