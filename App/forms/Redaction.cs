@@ -110,9 +110,18 @@ namespace App
             {
                 MessageBox.Show("Событие не найдено");
             }
-
+            if (!CorrectTime(updateEvent.Time))
+            {
+                MessageBox.Show("Некорректный формат времени. Нобходимо использовать формат ЧЧ:ММ (например, 14:30).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             using (var db = new EventsContext())
             {
+                if (ExistingEvent(updateEvent))
+                {
+                    MessageBox.Show("Такое событие уже существует!");
+                    return;
+                }
                 db.Events.Remove(db.Events.Find(id));
                 db.Events.Add(updateEvent);
                 db.SaveChanges();
@@ -132,6 +141,7 @@ namespace App
                 MessageBox.Show("Выберите участника для удаления");
                 return;
             }
+            
             int index = dataGridViewParticipant.CurrentRow.Index;
             participations.RemoveAt(index);
             LoadParticipation();
@@ -175,6 +185,39 @@ namespace App
             {
                 dataGridViewParticipant.Rows.Add( participant.EventId, participant.Name, participant.ParticipationId);
             }
+        }
+        public bool CorrectTime(string time)
+        {
+            if (DateTime.TryParse(time, out DateTime dt) && time == dt.ToShortTimeString())
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool ExistingEvent(Events events)
+        {
+            using (var db = new EventsContext())
+            {
+                foreach (var existingEvent in db.Events)
+                {
+                    if (existingEvent.Title == events.Title && existingEvent.Date == events.Date && existingEvent.Time == events.Time && existingEvent.Category == events.Category)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        private bool ExistingParticipant(string name)
+        {
+            foreach (var p in participations)
+            {
+                if (p.Name.ToLower() == name.ToLower())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

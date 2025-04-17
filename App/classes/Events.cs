@@ -8,7 +8,7 @@ namespace App
     public class Events
     {
         [Key]
-        public Guid EventId { get; set; }
+        public Guid EventId { get; set; } = Guid.NewGuid();
         public string Title { get; set; }
         public string Description { get; set; }
         public string Date { get; set; }

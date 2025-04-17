@@ -26,7 +26,7 @@ namespace App
         {
             if (dataGridEvents.Rows.Count <= 1)
             {
-                MessageBox.Show("Необходимо добавить события");
+                MessageBox.Show("Необходимо добавить событие");
             }
             else if (dataGridEvents.CurrentRow != null)
             {
@@ -96,7 +96,7 @@ namespace App
         {
             if (dataGridEvents.Rows.Count <= 1)
             {
-                MessageBox.Show("Сначала добавьте события");
+                MessageBox.Show("Необходимо добавить событие");
             }
             else if (dataGridEvents.CurrentRow != null)
             {
