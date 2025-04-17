@@ -32,6 +32,9 @@
             this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
             this.textDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +52,10 @@
             this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewParticipant.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EventId,
+            this.ParticipantName,
+            this.ParticipationId});
             this.dataGridViewParticipant.Location = new System.Drawing.Point(32, 47);
             this.dataGridViewParticipant.Name = "dataGridViewParticipant";
             this.dataGridViewParticipant.RowHeadersWidth = 51;
@@ -72,6 +79,26 @@
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Описание";
+            // 
+            // EventId
+            // 
+            this.EventId.HeaderText = "EventId";
+            this.EventId.MinimumWidth = 6;
+            this.EventId.Name = "EventId";
+            this.EventId.Visible = false;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.HeaderText = "Имя";
+            this.ParticipantName.MinimumWidth = 6;
+            this.ParticipantName.Name = "ParticipantName";
+            // 
+            // ParticipationId
+            // 
+            this.ParticipationId.HeaderText = "ParticipationId";
+            this.ParticipationId.MinimumWidth = 6;
+            this.ParticipationId.Name = "ParticipationId";
+            this.ParticipationId.Visible = false;
             // 
             // Participants
             // 
@@ -99,5 +126,8 @@
         private System.Windows.Forms.DataGridView dataGridViewParticipant;
         private System.Windows.Forms.TextBox textDescription;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EventId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipationId;
     }
 }

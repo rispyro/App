@@ -10,7 +10,7 @@ namespace App
         /// <summary>
         /// ID редактируемого события
         /// </summary>
-        public int ID;
+        public Guid ID;
 
         /// <summary>
         /// Ссылка на главную форму для обновления данных
@@ -27,7 +27,7 @@ namespace App
         /// </summary>
         /// <param name="id">ID события</param>
         /// <param name="main">Ссылка на главную форму</param>
-        public Redaction(int id, Main main)
+        public Redaction(Guid id, Main main)
         {
             InitializeComponent();
             ID = id;
@@ -39,28 +39,34 @@ namespace App
         /// </summary>
         private void Redaction_Load(object sender, EventArgs e)
         {
-            Events events = new Events();
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
-                events = db.Events.Find(ID);
-
+                var events = db.Events.Find(ID);
+                if (events == null)
+                {
+                    MessageBox.Show("Событие не найдено");
+                    return;
+                }
+                if (!DateTime.TryParse(events.Date, out DateTime date))
+                {
+                    MessageBox.Show("Дата некорректна");
+                }
                 textTitle.Text = events.Title;
                 textDescription.Text = events.Description;
-                textDate.Text = events.Date;
+                dateTimePicker1.Value = date;
                 textTime.Text = events.Time;
                 textCategory.Text = events.Category;
 
-                dataGridViewParticipant.DataSource = db.Participation.ToList();
-                db.SaveChanges();
+                var allParticipants = db.Participation.ToList();
 
-                foreach (Participation participant in db.Participation.ToList())
+                foreach (Participation p in allParticipants)
                 {
-                    if (participant.EventId == ID)
+                    if (p.EventId == ID)
                     {
-                        participations.Add(participant);
+                        participations.Add(p);
                     }
                 }
-
+                
                 LoadParticipation();
             }
         }
@@ -76,7 +82,7 @@ namespace App
                 {
                     Title = textTitle.Text,
                     Description = textDescription.Text,
-                    Date = textDate.Text,
+                    Date =  dateTimePicker1.Value.ToShortDateString(),
                     Time = textTime.Text,
                     Category = textCategory.Text
                 };
@@ -95,18 +101,17 @@ namespace App
         /// </summary>
         /// <param name="updateEvent">Обновлённое событие</param>
         /// <param name="id">ID события</param>
-        public void UpdateEvent(Events updateEvent, int id)
+        public void UpdateEvent(Events updateEvent, Guid id)
         {
             if (string.IsNullOrWhiteSpace(textTitle.Text) ||
                 string.IsNullOrWhiteSpace(textDescription.Text) ||
-                string.IsNullOrWhiteSpace(textDate.Text) ||
                 string.IsNullOrWhiteSpace(textTime.Text) ||
                 string.IsNullOrWhiteSpace(textCategory.Text))
             {
-                throw new ArgumentException("Не все поля леса!");
+                MessageBox.Show("Событие не найдено");
             }
 
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
                 db.Events.Remove(db.Events.Find(id));
                 db.Events.Add(updateEvent);
@@ -127,14 +132,11 @@ namespace App
                 MessageBox.Show("Выберите участника для удаления");
                 return;
             }
-
             int index = dataGridViewParticipant.CurrentRow.Index;
-            if (index >= 0 && index < participations.Count)
-            {
-                participations.RemoveAt(index);
-                LoadParticipation();
-                MessageBox.Show("Участник удалён");
-            }
+            participations.RemoveAt(index);
+            LoadParticipation();
+            MessageBox.Show("Участник удалён");
+
         }
 
         /// <summary>
@@ -148,9 +150,9 @@ namespace App
                 return;
             }
 
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
-                Participation participation = new Participation()
+                var participation = new Participation()
                 {
                     Name = textParticipant.Text,
                     EventId = ID
@@ -168,9 +170,11 @@ namespace App
         /// </summary>
         public void LoadParticipation()
         {
-            dataGridViewParticipant.DataSource = participations.ToList();
-            dataGridViewParticipant.Columns["ParticipationID"].Visible = false;
-            dataGridViewParticipant.Columns["EventID"].Visible = false;
+            dataGridViewParticipant.Rows.Clear();
+            foreach (var participant in participations)
+            {
+                dataGridViewParticipant.Rows.Add( participant.EventId, participant.Name, participant.ParticipationId);
+            }
         }
     }
 }

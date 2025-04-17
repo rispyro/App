@@ -78,9 +78,11 @@ namespace App
         /// </summary>
         private void LoadParticipation()
         {
-            dataGridParticipant.DataSource = participations.ToList();
-            dataGridParticipant.Columns["ParticipationID"].Visible = false;
-            dataGridParticipant.Columns["EventID"].Visible = false;
+            dataGridParticipant.Rows.Clear();
+            foreach (var participant in participations)
+            {
+                dataGridParticipant.Rows.Add(participant.EventId,participant.Name, participant.ParticipationId);
+            }
         }
 
         /// <summary>
@@ -94,7 +96,7 @@ namespace App
                 {
                     Title = textTitle.Text,
                     Description = textDescription.Text,
-                    Date = textDate.Text,
+                    Date = dateTimePicker1.Value.ToShortDateString(),
                     Time = textTime.Text,
                     Category = textCategory.Text
                 };
@@ -103,9 +105,9 @@ namespace App
                 Main.LoadEvents();
                 MessageBox.Show("Событие добавлено");
             }
-            catch (ArgumentException ae)
+            catch (Exception exception)
             {
-                MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -115,17 +117,15 @@ namespace App
         /// <param name="newEvent">Объект события</param>
         public void AddNewEvent(Events newEvent)
         {
-            if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) ||
-                string.IsNullOrWhiteSpace(newEvent.Date) || string.IsNullOrWhiteSpace(newEvent.Time) ||
+            if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) || string.IsNullOrWhiteSpace(newEvent.Time) ||
                 string.IsNullOrWhiteSpace(newEvent.Category))
             {
-                throw new ArgumentException("Не все поля поля!");
+                MessageBox.Show("Не все поля заполнены!");
             }
 
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
                 db.Events.Add(newEvent);
-                db.SaveChanges();
 
                 foreach (var participant in participations)
                 {
@@ -149,21 +149,19 @@ namespace App
             }
 
             int index = dataGridParticipant.CurrentRow.Index;
-            if (index >= 0 && index < participations.Count)
-            {
-                participations.RemoveAt(index);
-                LoadParticipation();
-                MessageBox.Show("Участник удалён");
-            }
+            participations.RemoveAt(index);
+            LoadParticipation();
+            MessageBox.Show("Участник удалён");
+
         }
 
         /// <summary>
         /// Удаляет участника из БД по его ID
         /// </summary>
         /// <param name="id">Идентификатор участника</param>
-        public void DeletePart(int id)
+        public void DeletePart(Guid id)
         {
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
                 Participation participant = db.Participation.Find(id);
                 if (participant != null)

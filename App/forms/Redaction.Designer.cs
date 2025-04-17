@@ -40,11 +40,14 @@
             this.btnAddPaticipant = new System.Windows.Forms.Button();
             this.textParticipant = new System.Windows.Forms.TextBox();
             this.textDescription = new System.Windows.Forms.TextBox();
-            this.textDate = new System.Windows.Forms.TextBox();
             this.textTime = new System.Windows.Forms.TextBox();
             this.textCategory = new System.Windows.Forms.TextBox();
             this.textTitle = new System.Windows.Forms.TextBox();
             this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,14 +167,6 @@
             this.textDescription.Size = new System.Drawing.Size(293, 174);
             this.textDescription.TabIndex = 21;
             // 
-            // textDate
-            // 
-            this.textDate.BackColor = System.Drawing.Color.Azure;
-            this.textDate.Location = new System.Drawing.Point(22, 109);
-            this.textDate.Name = "textDate";
-            this.textDate.Size = new System.Drawing.Size(114, 22);
-            this.textDate.TabIndex = 20;
-            // 
             // textTime
             // 
             this.textTime.BackColor = System.Drawing.Color.Azure;
@@ -201,6 +196,10 @@
             this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewParticipant.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EventId,
+            this.ParticipantName,
+            this.ParticipationId});
             this.dataGridViewParticipant.Location = new System.Drawing.Point(231, 39);
             this.dataGridViewParticipant.Name = "dataGridViewParticipant";
             this.dataGridViewParticipant.RowHeadersWidth = 51;
@@ -208,12 +207,40 @@
             this.dataGridViewParticipant.Size = new System.Drawing.Size(293, 168);
             this.dataGridViewParticipant.TabIndex = 34;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(22, 109);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(114, 22);
+            this.dateTimePicker1.TabIndex = 35;
+            // 
+            // EventId
+            // 
+            this.EventId.HeaderText = "EventId";
+            this.EventId.MinimumWidth = 6;
+            this.EventId.Name = "EventId";
+            this.EventId.Visible = false;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.HeaderText = "Имя";
+            this.ParticipantName.MinimumWidth = 6;
+            this.ParticipantName.Name = "ParticipantName";
+            // 
+            // ParticipationId
+            // 
+            this.ParticipationId.HeaderText = "ParticipationId";
+            this.ParticipationId.MinimumWidth = 6;
+            this.ParticipationId.Name = "ParticipationId";
+            this.ParticipationId.Visible = false;
+            // 
             // Redaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(591, 527);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGridViewParticipant);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -227,7 +254,6 @@
             this.Controls.Add(this.btnAddPaticipant);
             this.Controls.Add(this.textParticipant);
             this.Controls.Add(this.textDescription);
-            this.Controls.Add(this.textDate);
             this.Controls.Add(this.textTime);
             this.Controls.Add(this.textCategory);
             this.Controls.Add(this.textTitle);
@@ -256,10 +282,13 @@
         private System.Windows.Forms.Button btnAddPaticipant;
         private System.Windows.Forms.TextBox textParticipant;
         private System.Windows.Forms.TextBox textDescription;
-        private System.Windows.Forms.TextBox textDate;
         private System.Windows.Forms.TextBox textTime;
         private System.Windows.Forms.TextBox textCategory;
         private System.Windows.Forms.TextBox textTitle;
         private System.Windows.Forms.DataGridView dataGridViewParticipant;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EventId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipationId;
     }
 }

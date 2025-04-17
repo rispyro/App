@@ -24,19 +24,37 @@ namespace App
         /// </summary>
         private void buttonList_Click(object sender, EventArgs e)
         {
-            int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
-            Participants listForm = new Participants(id);
-            listForm.Show();
+            if (dataGridEvents.Rows.Count <= 1)
+            {
+                MessageBox.Show("Необходимо добавить события");
+            }
+            else if (dataGridEvents.CurrentRow != null)
+            {
+                Guid id = (Guid)dataGridEvents.CurrentRow.Cells[0].Value;
+                Participants listForm = new Participants(id);
+                listForm.Show();
+            }
+            else
+            { MessageBox.Show("Необходимо выбрать событие"); }
         }
-
+        
         /// <summary>
         /// Открывает форму редактирования для выбранного события
         /// </summary>
         private void buttonRedaction_Click(object sender, EventArgs e)
         {
-            int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
-            Redaction redaction = new Redaction(id, this);
-            redaction.Show();
+            if (dataGridEvents.Rows.Count <= 1)
+            {
+                MessageBox.Show("Необходимо добавить события");
+            }
+            else if (dataGridEvents.CurrentRow != null)
+            {
+                Guid id = (Guid)dataGridEvents.CurrentRow.Cells[0].Value;
+                Redaction redaction = new Redaction(id, this);
+                redaction.Show();
+            }
+            else
+            { MessageBox.Show("Необходимо выбрать событие"); }
         }
 
         /// <summary>
@@ -61,11 +79,13 @@ namespace App
         /// </summary>
         public void LoadEvents()
         {
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
-                dataGridEvents.DataSource = db.Events.ToList();
-                dataGridEvents.Columns["EventID"].Visible = false;
-                dataGridEvents.Columns["Description"].Visible = false;
+                dataGridEvents.Rows.Clear();
+                foreach (var events in db.Events)
+                {
+                    dataGridEvents.Rows.Add(events.EventId, events.Title, events.Date, events.Time, events.Category, events.Description);
+                }
             }
         }
 
@@ -74,16 +94,16 @@ namespace App
         /// </summary>
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridEvents.CurrentRow != null)
+            if (dataGridEvents.Rows.Count <= 1)
             {
-                int id = (int)dataGridEvents.CurrentRow.Cells[0].Value;
+                MessageBox.Show("Сначала добавьте события");
+            }
+            else if (dataGridEvents.CurrentRow != null)
+            {
+                Guid id = (Guid)dataGridEvents.CurrentRow.Cells[0].Value;
                 DeleteEvent(id);
                 MessageBox.Show("Событие удалено");
                 LoadEvents();
-            }
-            else if (dataGridEvents.Rows.Count == 0)
-            {
-                MessageBox.Show("Сначала добавьте события");
             }
             else
             {
@@ -95,9 +115,9 @@ namespace App
         /// Удаляет событие из БД по ID
         /// </summary>
         /// <param name="id">Идентификатор события</param>
-        public void DeleteEvent(int id)
+        public void DeleteEvent(Guid id)
         {
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
                 Events events = db.Events.Find(id);
                 if (events != null)

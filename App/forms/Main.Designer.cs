@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
+            this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -46,14 +52,21 @@
             this.dataGridEvents.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridEvents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridEvents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridEvents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EventId,
+            this.Title,
+            this.Date,
+            this.Time,
+            this.Category,
+            this.Description});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridEvents.GridColor = System.Drawing.Color.Azure;
             this.dataGridEvents.Location = new System.Drawing.Point(22, 45);
             this.dataGridEvents.Name = "dataGridEvents";
@@ -61,6 +74,44 @@
             this.dataGridEvents.RowTemplate.Height = 24;
             this.dataGridEvents.Size = new System.Drawing.Size(837, 476);
             this.dataGridEvents.TabIndex = 0;
+            // 
+            // EventId
+            // 
+            this.EventId.HeaderText = "EventId";
+            this.EventId.MinimumWidth = 6;
+            this.EventId.Name = "EventId";
+            this.EventId.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Название";
+            this.Title.MinimumWidth = 6;
+            this.Title.Name = "Title";
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Дата";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Время";
+            this.Time.MinimumWidth = 6;
+            this.Time.Name = "Time";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Категория";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Описание";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.Visible = false;
             // 
             // radioButton1
             // 
@@ -182,6 +233,12 @@
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Button buttonRedaction;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EventId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }
 

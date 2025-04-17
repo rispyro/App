@@ -31,7 +31,7 @@ namespace AppTests
             int RowsCount = add.dataGridParticipant.Rows.Count;
             add.AddNewParticipation(part);
 
-            int id = (int)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 1].Cells[0].Value;
+            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 1].Cells[0].Value;
 
             add.DeletePart(id);
 

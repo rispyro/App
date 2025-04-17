@@ -10,7 +10,7 @@ namespace App
         /// <summary>
         /// Идентификатор события, участники которого отображаются
         /// </summary>
-        public int ID;
+        public Guid ID;
 
         /// <summary>
         /// Список участников, связанных с выбранным событием
@@ -21,7 +21,7 @@ namespace App
         /// Конструктор формы участников, принимает ID события
         /// </summary>
         /// <param name="id">Идентификатор события</param>
-        public Participants(int id)
+        public Participants(Guid id)
         {
             ID = id;
             InitializeComponent();
@@ -33,12 +33,15 @@ namespace App
         private void Participants_Load(object sender, EventArgs e)
         {
             Events events = new Events();
-            using (EventsContext db = new EventsContext())
+            using (var db = new EventsContext())
             {
                 events = db.Events.Find(ID);
+                if (events == null)
+                {
+                    MessageBox.Show("Событие не найдено");
+                    return;
+                }
                 textDescription.Text = events.Description;
-                dataGridViewParticipant.DataSource = db.Participation.ToList();
-                db.SaveChanges();
 
                 foreach (Participation participant in db.Participation.ToList())
                 {
@@ -47,8 +50,9 @@ namespace App
                         participations.Add(participant);
                     }
                 }
-                LoadParticipation();
+                
             }
+            LoadParticipation();
         }
 
         /// <summary>
@@ -56,9 +60,11 @@ namespace App
         /// </summary>
         public void LoadParticipation()
         {
-            dataGridViewParticipant.DataSource = participations.ToList();
-            dataGridViewParticipant.Columns["ParticipationID"].Visible = false;
-            dataGridViewParticipant.Columns["EventID"].Visible = false;
+            dataGridViewParticipant.Rows.Clear();
+            foreach (var participant in participations)
+            {
+                dataGridViewParticipant.Rows.Add(participant.EventId, participant.Name, participant.ParticipationId);
+            }
         }
     }
 }

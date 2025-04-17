@@ -44,7 +44,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridParticipant = new System.Windows.Forms.DataGridView();
-            this.textDate = new System.Windows.Forms.TextBox();
+            this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParticipationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridParticipant)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,6 +196,10 @@
             this.dataGridParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridParticipant.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridParticipant.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EventId,
+            this.ParticipantName,
+            this.ParticipationId});
             this.dataGridParticipant.Location = new System.Drawing.Point(237, 40);
             this.dataGridParticipant.Name = "dataGridParticipant";
             this.dataGridParticipant.RowHeadersWidth = 51;
@@ -200,13 +207,36 @@
             this.dataGridParticipant.Size = new System.Drawing.Size(293, 165);
             this.dataGridParticipant.TabIndex = 17;
             // 
-            // textDate
+            // EventId
             // 
-            this.textDate.BackColor = System.Drawing.Color.Azure;
-            this.textDate.Location = new System.Drawing.Point(28, 111);
-            this.textDate.Name = "textDate";
-            this.textDate.Size = new System.Drawing.Size(114, 22);
-            this.textDate.TabIndex = 18;
+            this.EventId.HeaderText = "EventId";
+            this.EventId.MinimumWidth = 6;
+            this.EventId.Name = "EventId";
+            this.EventId.Visible = false;
+            // 
+            // ParticipantName
+            // 
+            this.ParticipantName.HeaderText = "Имя";
+            this.ParticipantName.MinimumWidth = 6;
+            this.ParticipantName.Name = "ParticipantName";
+            // 
+            // ParticipationId
+            // 
+            this.ParticipationId.HeaderText = "ParticipationId";
+            this.ParticipationId.MinimumWidth = 6;
+            this.ParticipationId.Name = "ParticipationId";
+            this.ParticipationId.Visible = false;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.LightSteelBlue;
+            this.dateTimePicker1.Checked = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(31, 112);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(111, 22);
+            this.dateTimePicker1.TabIndex = 18;
+            this.dateTimePicker1.Value = new System.DateTime(2025, 4, 17, 14, 16, 38, 0);
             // 
             // Add
             // 
@@ -214,7 +244,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(591, 527);
-            this.Controls.Add(this.textDate);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGridParticipant);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -261,6 +291,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.DataGridView dataGridParticipant;
-        private System.Windows.Forms.TextBox textDate;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EventId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipantName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParticipationId;
     }
 }

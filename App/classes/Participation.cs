@@ -1,11 +1,13 @@
-﻿namespace App
+﻿using System;
+
+namespace App
 {
     public class Participation
     {
-        public int ParticipationId { get; set; }
+        public Guid ParticipationId { get; set; } = Guid.NewGuid();
 
         public string Name { get; set; }
 
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
     }
 }

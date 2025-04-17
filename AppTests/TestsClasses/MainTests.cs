@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using App;
-using System.Windows.Forms;
+using System;
 
 namespace AppTests
 {
@@ -23,7 +23,7 @@ namespace AppTests
             int RowsCount = main.dataGridEvents.Rows.Count;
             add.AddNewEvent(events);
             main.LoadEvents();
-            int id = (int)main.dataGridEvents.Rows[main.dataGridEvents.Rows.Count - 1].Cells[0].Value;
+            Guid id = (Guid)main.dataGridEvents.Rows[main.dataGridEvents.Rows.Count - 1].Cells[0].Value;
 
             main.DeleteEvent(id);
 

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,7 +8,7 @@ namespace App
     public class Events
     {
         [Key]
-        public int EventId { get; set; }
+        public Guid EventId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string Date { get; set; }
