@@ -1,22 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using App.classes.sorting;
 
 namespace App
 {
     public partial class Main : Form
     {
+        private string currentSort = "";
         /// <summary>
         /// Конструктор главной формы
         /// </summary>
         public Main()
         {
             InitializeComponent();
-
-            //using (EventsContext db = new EventsContext())
-            //{
-            //    db.Database.Delete();
-            //}
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
+            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
         }
 
         /// <summary>
@@ -82,7 +83,20 @@ namespace App
             using (var db = new EventsContext())
             {
                 dataGridEvents.Rows.Clear();
-                foreach (var events in db.Events)
+                List<Events> eventList = db.Events.ToList();
+                if (currentSort == "Title")
+                {
+                    eventList.Sort(new SortingByTitle());
+                }
+                else if (currentSort == "Date")
+                {
+                    eventList.Sort(new SortingByDate());
+                }
+                else if (currentSort == "Category")
+                {
+                    eventList.Sort(new SortingByCategory());
+                }
+                foreach (var events in eventList)
                 {
                     dataGridEvents.Rows.Add(events.EventId, events.Title, events.Date, events.Time, events.Category, events.Description);
                 }
@@ -131,23 +145,48 @@ namespace App
                 }
             }
         }
-        // сотрировки ( не доделаны)
-        //private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    this.dataGridEvents.Columns["EventId"].SortMode = DataGridViewColumnSortMode.Automatic;
-        //    LoadEvents();
-        //}
+        /// <summary>
+        /// Обработчик кнопки сортировки "По порядку"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                currentSort = "Title";
+                LoadEvents();
+            }
+        }
+        /// <summary>
+        /// Обработчик кнопки сортировки "По дате"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                currentSort = "Date";
+                LoadEvents();
+            }
+        }
+        /// <summary>
+        /// Обработчик кнопки сортировки "По категории"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            { 
+                currentSort = "Category";
+                LoadEvents();
+            }
+        }
 
-        //private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    this.dataGridEvents.Columns["Date"].SortMode = DataGridViewColumnSortMode.Automatic;
-        //    LoadEvents();
-        //}
-
-        //private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    this.dataGridEvents.Columns["Category"].SortMode = DataGridViewColumnSortMode.Automatic;
-        //    LoadEvents();
-        //}
+        private void dataGridEvents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
     }
 }

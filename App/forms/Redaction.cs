@@ -50,6 +50,7 @@ namespace App
                 if (!DateTime.TryParse(events.Date, out DateTime date))
                 {
                     MessageBox.Show("Дата некорректна");
+                    return;
                 }
                 textTitle.Text = events.Title;
                 textDescription.Text = events.Description;
@@ -90,7 +91,7 @@ namespace App
                 UpdateEvent(updateEvent, ID);
                 Main.LoadEvents();
             }
-            catch (ArgumentException ae)
+            catch (Exception ae)
             {
                 MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -109,6 +110,7 @@ namespace App
                 string.IsNullOrWhiteSpace(textCategory.Text))
             {
                 MessageBox.Show("Событие не найдено");
+                return;
             }
             if (!CorrectTime(updateEvent.Time))
             {
@@ -159,19 +161,26 @@ namespace App
                 MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            string newParticipantName = textParticipant.Text;
+            if (ExistingParticipant(newParticipantName, ID))
+            {
+                MessageBox.Show("Участник уже добавлен в это событие!");
+                return;
+            }
             using (var db = new EventsContext())
             {
                 var participation = new Participation()
                 {
                     Name = textParticipant.Text,
-                    EventId = ID
+                    EventId = ID,
+                    ParticipationId = Guid.NewGuid()
                 };
-
-                participations.Add(participation);
+                db.Participation.Add(participation);
                 db.SaveChanges();
+                participations.Add(participation);
                 LoadParticipation();
                 Main.LoadEvents();
+                MessageBox.Show("Участник добавлен");
             }
         }
 
@@ -186,6 +195,11 @@ namespace App
                 dataGridViewParticipant.Rows.Add( participant.EventId, participant.Name, participant.ParticipationId);
             }
         }
+        /// <summary>
+        /// Проверка на корректность времени
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public bool CorrectTime(string time)
         {
             if (DateTime.TryParse(time, out DateTime dt) && time == dt.ToShortTimeString())
@@ -194,6 +208,11 @@ namespace App
             }
             return false;
         }
+        /// <summary>
+        /// Проверка на существующее событие
+        /// </summary>
+        /// <param name="events"></param>
+        /// <returns></returns>
         private bool ExistingEvent(Events events)
         {
             using (var db = new EventsContext())
@@ -208,13 +227,20 @@ namespace App
             }
             return false;
         }
-        private bool ExistingParticipant(string name)
+        /// <summary>
+        /// Проверка на существующего участника
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        private bool ExistingParticipant(string name, Guid eventId)
         {
-            foreach (var p in participations)
+            using (var db = new EventsContext())
             {
-                if (p.Name.ToLower() == name.ToLower())
+                foreach (var participant in db.Participation)
                 {
-                    return true;
+                    if (participant.Name.ToLower() == Name.ToLower() && participant.EventId == eventId)
+                    { return true; }
                 }
             }
             return false;

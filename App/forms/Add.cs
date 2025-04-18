@@ -25,11 +25,6 @@ namespace App
         {
             InitializeComponent();
             Main = main;
-
-            //using (EventsContext db = new EventsContext())
-            //{
-            //    db.Database.Delete();
-            //}
         }
 
         /// <summary>
@@ -50,7 +45,6 @@ namespace App
                 Participation newParticipant = new Participation { Name = textParticipant.Text };
                 AddNewParticipation(newParticipant);
 
-                MessageBox.Show("Пользователь добавлен");
             }
             catch (ArgumentException ae)
             {
@@ -68,12 +62,18 @@ namespace App
             {
                 throw new ArgumentException("Не все поля заполнены!");
             }
-            if (ExistingParticipant(participant.Name))
+            foreach (Participation existingParticipant in participations)
             {
-                MessageBox.Show("Такой участник уже добавлен!");
+                if (existingParticipant.Name == participant.Name)
+                {
+                    MessageBox.Show("Участник уже добавлен в это событие!");
+                    return;
+                }
             }
+            participant.ParticipationId = Guid.NewGuid();
             participations.Add(participant);
             LoadParticipation();
+            MessageBox.Show("Пользователь добавлен");
         }
 
         /// <summary>
@@ -104,9 +104,11 @@ namespace App
                     Category = textCategory.Text
                 };
 
-                AddNewEvent(newEvent);
-                Main.LoadEvents();
-                MessageBox.Show("Событие добавлено");
+                if (AddNewEvent(newEvent))
+                {
+                    Main.LoadEvents();
+                    MessageBox.Show("Событие добавлено");
+                }
             }
             catch (Exception exception)
             {
@@ -119,36 +121,41 @@ namespace App
         /// Добавляет новое событие и сохраняет участников, связанных с ним
         /// </summary>
         /// <param name="newEvent">Объект события</param>
-        public void AddNewEvent(Events newEvent)
+        public bool AddNewEvent(Events newEvent)
         {
             if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) || string.IsNullOrWhiteSpace(newEvent.Time) ||
                 string.IsNullOrWhiteSpace(newEvent.Category))
             {
                 MessageBox.Show("Не все поля заполнены!");
-                return;
+                return false;
             }
             if (!CorrectTime(newEvent.Time))
             {
                 MessageBox.Show("Некорректный формат времени. Нобходимо использовать формат ЧЧ:ММ (например, 14:30).", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
             using (var db = new EventsContext())
             {
                 if (ExistingEvent(newEvent))
                 {
                     MessageBox.Show("Такое событие уже существует!");
-                    return;
+                    return false;
                 }
                 db.Events.Add(newEvent);
-
+                db.SaveChanges();
                 foreach (var participant in participations)
                 {
+                    if (ExistingParticipant(participant, newEvent.EventId))
+                    {
+                        MessageBox.Show("Участик уже участвует в этом событии!");
+                        return false;
+                    }
                     participant.EventId = newEvent.EventId;
                     db.Participation.Add(participant);
                 }
-
                 db.SaveChanges();
             }
+            return true;
         }
 
         /// <summary>
@@ -185,6 +192,11 @@ namespace App
                 }
             }
         }
+        /// <summary>
+        /// Метод проверяет корректность времени
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public bool CorrectTime(string time)
         {
             if (DateTime.TryParse(time, out DateTime dt) && time == dt.ToShortTimeString())
@@ -193,6 +205,11 @@ namespace App
             }
             return false;
         }
+        /// <summary>
+        /// Проверка на существующее событие
+        /// </summary>
+        /// <param name="events"></param>
+        /// <returns></returns>
         private bool ExistingEvent(Events events)
         {
             using (var db = new EventsContext())
@@ -207,13 +224,21 @@ namespace App
             }
             return false;
         }
-        private bool ExistingParticipant(string name)
+        /// <summary>
+        /// Проверка на существующего участника
+        /// </summary>
+        /// <param name="participant"></param>
+        /// <param name="eventId"></param>
+        /// <returns></returns>
+        private bool ExistingParticipant(Participation participant, Guid eventId)
         {
-            foreach (var p in participations)
+            using (var db = new EventsContext())
             {
-                if (p.Name.ToLower() == name.ToLower())
+                var participationInEvent = db.Participation.ToList();
+                foreach (var existingPartisipant in participationInEvent)
                 {
-                    return true;
+                    if (existingPartisipant.EventId == eventId && existingPartisipant.Name == participant.Name)
+                    {  return true; }
                 }
             }
             return false;

@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\sorting\SortingByCategory.cs" />
+    <Compile Include="classes\sorting\SortingByDate.cs" />
+    <Compile Include="classes\sorting\SortingByTitle.cs" />
     <Compile Include="forms\Add.cs">
       <SubType>Form</SubType>
     </Compile>
