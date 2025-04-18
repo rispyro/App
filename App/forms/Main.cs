@@ -16,9 +16,9 @@ namespace App
         public Main()
         {
             InitializeComponent();
-            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
-            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
-            radioButton3.CheckedChanged += radioButton3_CheckedChanged;
+            radioButtonName.CheckedChanged += radioButtonName_CheckedChanged;
+            radioButtonDate.CheckedChanged += radioButtonDate_CheckedChanged;
+            radioButtonCategory.CheckedChanged += radioButtonCategory_CheckedChanged;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace App
         /// </summary>
         private void buttonList_Click(object sender, EventArgs e)
         {
-            if (dataGridEvents.Rows.Count <= 1)
+            if (dataGridEvents.Rows.Count == 0)
             {
                 MessageBox.Show("Необходимо добавить событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -45,7 +45,7 @@ namespace App
         /// </summary>
         private void buttonRedaction_Click(object sender, EventArgs e)
         {
-            if (dataGridEvents.Rows.Count <= 1)
+            if (dataGridEvents.Rows.Count == 0)
             {
                 MessageBox.Show("Необходимо добавить события", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -110,7 +110,7 @@ namespace App
         /// </summary>
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridEvents.Rows.Count <= 1)
+            if (dataGridEvents.Rows.Count == 0)
             {
                 MessageBox.Show("Необходимо добавить событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -135,7 +135,7 @@ namespace App
         {
             using (var db = new EventsContext())
             {
-                Events events = db.Events.Find(id);
+                var events = db.Events.Find(id);
                 if (events != null)
                 {
                     db.Events.Remove(events);
@@ -152,9 +152,9 @@ namespace App
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonName_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
+            if (radioButtonName.Checked)
             {
                 currentSort = "Title";
                 LoadEvents();
@@ -165,9 +165,9 @@ namespace App
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonDate_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton2.Checked)
+            if (radioButtonDate.Checked)
             {
                 currentSort = "Date";
                 LoadEvents();
@@ -178,19 +178,26 @@ namespace App
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonCategory_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButton3.Checked)
+            if (radioButtonCategory.Checked)
             { 
                 currentSort = "Category";
                 LoadEvents();
             }
         }
-
+        /// <summary>
+        /// Обработчик кнопки сохранения отчёта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonReport_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.Filter = "Text Files | *.txt";
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            { 
                 return;
+            }    
 
             List<string> list = new List<string>();
             using (var db = new EventsContext())
@@ -216,7 +223,7 @@ namespace App
                 }
             }
             File.AppendAllLines(saveFileDialog1.FileName, list);
-            MessageBox.Show("Отчет сохранен!");
+            MessageBox.Show("Отчет сохранен!", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

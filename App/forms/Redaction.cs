@@ -61,7 +61,7 @@ namespace App
 
                 var allParticipants = db.Participation.ToList();
 
-                foreach (Participation p in allParticipants)
+                foreach (var p in allParticipants)
                 {
                     if (p.EventId == ID)
                     {
@@ -80,7 +80,7 @@ namespace App
         {
             try
             {
-                Events updateEvent = new Events()
+                var updateEvent = new Events()
                 {
                     Title = textTitle.Text,
                     Description = textDescription.Text,
@@ -132,6 +132,7 @@ namespace App
 
             MessageBox.Show("Информация о событии обновлена", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Main.LoadEvents();
+            this.Close();
         }
 
         /// <summary>
@@ -162,12 +163,7 @@ namespace App
                 MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string newParticipantName = textParticipant.Text;
-            if (ExistingParticipant(newParticipantName, ID))
-            {
-                MessageBox.Show("Участник уже добавлен в это событие!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+           
             using (var db = new EventsContext())
             {
                 var participation = new Participation()
@@ -228,23 +224,6 @@ namespace App
             }
             return false;
         }
-        /// <summary>
-        /// Проверка на существующего участника
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="eventId"></param>
-        /// <returns></returns>
-        private bool ExistingParticipant(string name, Guid eventId)
-        {
-            using (var db = new EventsContext())
-            {
-                foreach (var participant in db.Participation)
-                {
-                    if (participant.Name.ToLower() == Name.ToLower() && participant.EventId == eventId)
-                    { return true; }
-                }
-            }
-            return false;
-        }
+        
     }
 }

@@ -43,7 +43,7 @@ namespace App
         {
             try
             {
-                Participation newParticipant = new Participation { Name = textParticipant.Text };
+                var newParticipant = new Participation { Name = textParticipant.Text };
                 AddNewParticipation(newParticipant);
 
             }
@@ -63,14 +63,6 @@ namespace App
             {
                 MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
-            foreach (Participation existingParticipant in participations)
-            {
-                if (existingParticipant.Name == participant.Name)
-                {
-                    MessageBox.Show("Участник уже добавлен в это событие!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
             }
             participant.ParticipationId = Guid.NewGuid();
             participations.Add(participant);
@@ -97,7 +89,7 @@ namespace App
         {
             try
             {
-                Events newEvent = new Events()
+                var newEvent = new Events()
                 {
                     Title = textTitle.Text,
                     Description = textDescription.Text,
@@ -148,11 +140,6 @@ namespace App
                 db.SaveChanges();
                 foreach (var participant in participations)
                 {
-                    if (ExistingParticipant(participant, newEvent.EventId))
-                    {
-                        MessageBox.Show("Участик уже участвует в этом событии!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
                     participant.EventId = newEvent.EventId;
                     db.Participation.Add(participant);
                 }
@@ -227,24 +214,6 @@ namespace App
             }
             return false;
         }
-        /// <summary>
-        /// Проверка на существующего участника
-        /// </summary>
-        /// <param name="participant"></param>
-        /// <param name="eventId"></param>
-        /// <returns></returns>
-        private bool ExistingParticipant(Participation participant, Guid eventId)
-        {
-            using (var db = new EventsContext())
-            {
-                var participationInEvent = db.Participation.ToList();
-                foreach (var existingPartisipant in participationInEvent)
-                {
-                    if (existingPartisipant.EventId == eventId && existingPartisipant.Name == participant.Name)
-                    {  return true; }
-                }
-            }
-            return false;
-        }
+        
     }
 }

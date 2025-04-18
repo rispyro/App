@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
             this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,9 +36,9 @@
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonName = new System.Windows.Forms.RadioButton();
+            this.radioButtonDate = new System.Windows.Forms.RadioButton();
+            this.radioButtonCategory = new System.Windows.Forms.RadioButton();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonRedaction = new System.Windows.Forms.Button();
@@ -62,14 +62,14 @@
             this.Time,
             this.Category,
             this.Description});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridEvents.GridColor = System.Drawing.Color.Azure;
             this.dataGridEvents.Location = new System.Drawing.Point(22, 45);
             this.dataGridEvents.Name = "dataGridEvents";
@@ -122,40 +122,40 @@
             this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Description.Visible = false;
             // 
-            // radioButton1
+            // radioButtonName
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(22, 13);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(103, 20);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "По порядку";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonName.AutoSize = true;
+            this.radioButtonName.Location = new System.Drawing.Point(22, 13);
+            this.radioButtonName.Name = "radioButtonName";
+            this.radioButtonName.Size = new System.Drawing.Size(103, 20);
+            this.radioButtonName.TabIndex = 2;
+            this.radioButtonName.TabStop = true;
+            this.radioButtonName.Text = "По порядку";
+            this.radioButtonName.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonDate
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(156, 13);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(80, 20);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "По дате";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonDate.AutoSize = true;
+            this.radioButtonDate.Location = new System.Drawing.Point(156, 13);
+            this.radioButtonDate.Name = "radioButtonDate";
+            this.radioButtonDate.Size = new System.Drawing.Size(80, 20);
+            this.radioButtonDate.TabIndex = 3;
+            this.radioButtonDate.TabStop = true;
+            this.radioButtonDate.Text = "По дате";
+            this.radioButtonDate.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButtonCategory
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.radioButton3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.radioButton3.Location = new System.Drawing.Point(270, 13);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(117, 20);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "По категории";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonCategory.AutoSize = true;
+            this.radioButtonCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.radioButtonCategory.Cursor = System.Windows.Forms.Cursors.Default;
+            this.radioButtonCategory.Location = new System.Drawing.Point(270, 13);
+            this.radioButtonCategory.Name = "radioButtonCategory";
+            this.radioButtonCategory.Size = new System.Drawing.Size(117, 20);
+            this.radioButtonCategory.TabIndex = 4;
+            this.radioButtonCategory.TabStop = true;
+            this.radioButtonCategory.Text = "По категории";
+            this.radioButtonCategory.UseVisualStyleBackColor = true;
             // 
             // buttonAdd
             // 
@@ -210,10 +210,13 @@
             // 
             // ButtonReport
             // 
-            this.ButtonReport.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ButtonReport.Location = new System.Drawing.Point(784, 13);
+            this.ButtonReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonReport.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ButtonReport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ButtonReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ButtonReport.Location = new System.Drawing.Point(778, 13);
             this.ButtonReport.Name = "ButtonReport";
-            this.ButtonReport.Size = new System.Drawing.Size(75, 23);
+            this.ButtonReport.Size = new System.Drawing.Size(81, 28);
             this.ButtonReport.TabIndex = 9;
             this.ButtonReport.Text = "Отчёт";
             this.ButtonReport.UseVisualStyleBackColor = false;
@@ -230,9 +233,9 @@
             this.Controls.Add(this.buttonRedaction);
             this.Controls.Add(this.buttonList);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.radioButtonCategory);
+            this.Controls.Add(this.radioButtonDate);
+            this.Controls.Add(this.radioButtonName);
             this.Controls.Add(this.dataGridEvents);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -249,9 +252,9 @@
         #endregion
 
         public System.Windows.Forms.DataGridView dataGridEvents;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButtonName;
+        private System.Windows.Forms.RadioButton radioButtonDate;
+        private System.Windows.Forms.RadioButton radioButtonCategory;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonList;
         private System.Windows.Forms.Button buttonRedaction;

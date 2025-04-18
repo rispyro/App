@@ -44,7 +44,7 @@ namespace App
                 }
                 textDescription.Text = events.Description;
 
-                foreach (Participation participant in db.Participation.ToList())
+                foreach (var participant in db.Participation.ToList())
                 {
                     if (participant.EventId == ID)
                     {
