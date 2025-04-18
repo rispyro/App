@@ -13,7 +13,9 @@ namespace AppTests
             Add add = new Add(new Main());
             Participation participation = new Participation();
 
-            Assert.ThrowsException<Exception>(() => add.AddNewParticipation(participation));
+            add.AddNewParticipation(participation);
+
+            Assert.AreEqual(null, new EventsContext().Participation.Find(participation.ParticipationId));
         }
         [TestMethod]
         public void Add_AddNewEvent_EmptyArgument()
@@ -38,7 +40,7 @@ namespace AppTests
             int RowsCount = add.dataGridParticipant.Rows.Count;
             add.AddNewParticipation(part);
 
-            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 2].Cells[0].Value;
+            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 1].Cells[0].Value;
 
             add.DeletePart(id);
 
