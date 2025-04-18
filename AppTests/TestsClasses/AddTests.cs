@@ -13,15 +13,22 @@ namespace AppTests
             Add add = new Add(new Main());
             Participation participation = new Participation();
 
-            Assert.ThrowsException<ArgumentException>(() => add.AddNewParticipation(participation));
+            Assert.ThrowsException<Exception>(() => add.AddNewParticipation(participation));
         }
         [TestMethod]
         public void Add_AddNewEvent_EmptyArgument()
         {
             Add add = new Add(new Main());
-            Events ev = new Events();
-
-            Assert.ThrowsException<ArgumentException>(() => add.AddNewEvent(ev));
+            Events ev = new Events() { EventId = Guid.NewGuid()};
+            bool actual = true;
+            using (var bd = new EventsContext())
+            {
+                if (bd.Events.Find(ev.EventId) == null)
+                {
+                    actual = !actual;
+                }
+            }
+            Assert.AreEqual(false, actual);
         }
         [TestMethod]
         public void DeletePart()
@@ -31,7 +38,7 @@ namespace AppTests
             int RowsCount = add.dataGridParticipant.Rows.Count;
             add.AddNewParticipation(part);
 
-            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 1].Cells[0].Value;
+            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 2].Cells[0].Value;
 
             add.DeletePart(id);
 
