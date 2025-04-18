@@ -30,6 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
+            this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -37,17 +43,14 @@
             this.buttonList = new System.Windows.Forms.Button();
             this.buttonRedaction = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonReport = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridEvents)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridEvents
             // 
+            this.dataGridEvents.AllowUserToAddRows = false;
             this.dataGridEvents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridEvents.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridEvents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
@@ -74,7 +77,50 @@
             this.dataGridEvents.RowTemplate.Height = 24;
             this.dataGridEvents.Size = new System.Drawing.Size(837, 476);
             this.dataGridEvents.TabIndex = 0;
-            this.dataGridEvents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridEvents_CellContentClick);
+            // 
+            // EventId
+            // 
+            this.EventId.HeaderText = "EventId";
+            this.EventId.MinimumWidth = 6;
+            this.EventId.Name = "EventId";
+            this.EventId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.EventId.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Название";
+            this.Title.MinimumWidth = 6;
+            this.Title.Name = "Title";
+            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Дата";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            this.Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Время";
+            this.Time.MinimumWidth = 6;
+            this.Time.Name = "Time";
+            this.Time.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Категория";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Описание";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Description.Visible = false;
             // 
             // radioButton1
             // 
@@ -162,49 +208,16 @@
             this.buttonDelete.UseVisualStyleBackColor = false;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // EventId
+            // ButtonReport
             // 
-            this.EventId.HeaderText = "EventId";
-            this.EventId.MinimumWidth = 6;
-            this.EventId.Name = "EventId";
-            this.EventId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.EventId.Visible = false;
-            // 
-            // Title
-            // 
-            this.Title.HeaderText = "Название";
-            this.Title.MinimumWidth = 6;
-            this.Title.Name = "Title";
-            this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Дата";
-            this.Date.MinimumWidth = 6;
-            this.Date.Name = "Date";
-            this.Date.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Time
-            // 
-            this.Time.HeaderText = "Время";
-            this.Time.MinimumWidth = 6;
-            this.Time.Name = "Time";
-            this.Time.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Категория";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Описание";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Description.Visible = false;
+            this.ButtonReport.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ButtonReport.Location = new System.Drawing.Point(784, 13);
+            this.ButtonReport.Name = "ButtonReport";
+            this.ButtonReport.Size = new System.Drawing.Size(75, 23);
+            this.ButtonReport.TabIndex = 9;
+            this.ButtonReport.Text = "Отчёт";
+            this.ButtonReport.UseVisualStyleBackColor = false;
+            this.ButtonReport.Click += new System.EventHandler(this.ButtonReport_Click);
             // 
             // Main
             // 
@@ -212,6 +225,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(885, 604);
+            this.Controls.Add(this.ButtonReport);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonRedaction);
             this.Controls.Add(this.buttonList);
@@ -248,6 +262,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.Button ButtonReport;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

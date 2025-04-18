@@ -39,17 +39,18 @@ namespace App
         /// </summary>
         private void Redaction_Load(object sender, EventArgs e)
         {
+
             using (var db = new EventsContext())
             {
                 var events = db.Events.Find(ID);
                 if (events == null)
                 {
-                    MessageBox.Show("Событие не найдено");
+                    MessageBox.Show("Событие не найдено", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (!DateTime.TryParse(events.Date, out DateTime date))
                 {
-                    MessageBox.Show("Дата некорректна");
+                    MessageBox.Show("Дата некорректна", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 textTitle.Text = events.Title;
@@ -109,7 +110,7 @@ namespace App
                 string.IsNullOrWhiteSpace(textTime.Text) ||
                 string.IsNullOrWhiteSpace(textCategory.Text))
             {
-                MessageBox.Show("Событие не найдено");
+                MessageBox.Show("Не все поля заполнены", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (!CorrectTime(updateEvent.Time))
@@ -121,7 +122,7 @@ namespace App
             {
                 if (ExistingEvent(updateEvent))
                 {
-                    MessageBox.Show("Такое событие уже существует!");
+                    MessageBox.Show("Такое событие уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 db.Events.Remove(db.Events.Find(id));
@@ -129,7 +130,7 @@ namespace App
                 db.SaveChanges();
             }
 
-            MessageBox.Show("Информация о событии обновлена");
+            MessageBox.Show("Информация о событии обновлена", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Main.LoadEvents();
         }
 
@@ -140,14 +141,14 @@ namespace App
         {
             if (dataGridViewParticipant.CurrentRow == null)
             {
-                MessageBox.Show("Выберите участника для удаления");
+                MessageBox.Show("Выберите участника для удаления", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             
             int index = dataGridViewParticipant.CurrentRow.Index;
             participations.RemoveAt(index);
             LoadParticipation();
-            MessageBox.Show("Участник удалён");
+            MessageBox.Show("Участник удалён", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -164,7 +165,7 @@ namespace App
             string newParticipantName = textParticipant.Text;
             if (ExistingParticipant(newParticipantName, ID))
             {
-                MessageBox.Show("Участник уже добавлен в это событие!");
+                MessageBox.Show("Участник уже добавлен в это событие!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             using (var db = new EventsContext())
@@ -180,7 +181,7 @@ namespace App
                 participations.Add(participation);
                 LoadParticipation();
                 Main.LoadEvents();
-                MessageBox.Show("Участник добавлен");
+                MessageBox.Show("Участник добавлен", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -219,7 +220,7 @@ namespace App
             {
                 foreach (var existingEvent in db.Events)
                 {
-                    if (existingEvent.Title == events.Title && existingEvent.Date == events.Date && existingEvent.Time == events.Time && existingEvent.Category == events.Category)
+                    if (existingEvent.Title == events.Title && existingEvent.Date == events.Date && existingEvent.Time == events.Time && existingEvent.Category == events.Category && existingEvent.Description == events.Description)
                     {
                         return true;
                     }

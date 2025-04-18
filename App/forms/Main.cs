@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using App.classes.sorting;
@@ -27,7 +28,7 @@ namespace App
         {
             if (dataGridEvents.Rows.Count <= 1)
             {
-                MessageBox.Show("Необходимо добавить событие");
+                MessageBox.Show("Необходимо добавить событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (dataGridEvents.CurrentRow != null)
             {
@@ -36,7 +37,7 @@ namespace App
                 listForm.Show();
             }
             else
-            { MessageBox.Show("Необходимо выбрать событие"); }
+            { MessageBox.Show("Необходимо выбрать событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
         
         /// <summary>
@@ -46,7 +47,7 @@ namespace App
         {
             if (dataGridEvents.Rows.Count <= 1)
             {
-                MessageBox.Show("Необходимо добавить события");
+                MessageBox.Show("Необходимо добавить события", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (dataGridEvents.CurrentRow != null)
             {
@@ -55,7 +56,7 @@ namespace App
                 redaction.Show();
             }
             else
-            { MessageBox.Show("Необходимо выбрать событие"); }
+            { MessageBox.Show("Необходимо выбрать событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         /// <summary>
@@ -72,6 +73,7 @@ namespace App
         /// </summary>
         private void Main_Load(object sender, EventArgs e)
         {
+            
             LoadEvents();
         }
 
@@ -110,18 +112,18 @@ namespace App
         {
             if (dataGridEvents.Rows.Count <= 1)
             {
-                MessageBox.Show("Необходимо добавить событие");
+                MessageBox.Show("Необходимо добавить событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (dataGridEvents.CurrentRow != null)
             {
                 Guid id = (Guid)dataGridEvents.CurrentRow.Cells[0].Value;
                 DeleteEvent(id);
-                MessageBox.Show("Событие удалено");
+                MessageBox.Show("Событие удалено", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadEvents();
             }
             else
             {
-                MessageBox.Show("Выберите событие");
+                MessageBox.Show("Выберите событие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -141,7 +143,7 @@ namespace App
                 }
                 else
                 {
-                    MessageBox.Show("События не существует!");
+                    MessageBox.Show("События не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -185,8 +187,36 @@ namespace App
             }
         }
 
-        private void dataGridEvents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ButtonReport_Click(object sender, EventArgs e)
         {
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            List<string> list = new List<string>();
+            using (var db = new EventsContext())
+            {
+                foreach (DataGridViewRow row in this.dataGridEvents.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        Guid id = (Guid)row.Cells[0].Value;
+                        Events ev = db.Events.Find(id);
+                        string strEv = $"{ev.Title} | {ev.Description} | {ev.Date} | {ev.Time} | {ev.Category}";
+                        var parts = new List<string>();
+                        foreach (var part in db.Participation)
+                        {
+                            if (part.EventId == id)
+                            {
+                                parts.Add(part.Name);
+                            }
+                        }
+                        strEv += " | " + string.Join(",", parts);
+                        list.Add(strEv);
+                    }
+                }
+            }
+            File.AppendAllLines(saveFileDialog1.FileName, list);
+            MessageBox.Show("Отчет сохранен!");
         }
     }
 }

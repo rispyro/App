@@ -32,6 +32,7 @@ namespace App
         /// </summary>
         private void Add_Load(object sender, EventArgs e)
         {
+            
             LoadParticipation();
         }
 
@@ -60,20 +61,21 @@ namespace App
         {
             if (string.IsNullOrEmpty(participant.Name))
             {
-                throw new Exception("Не все поля заполнены!");
+                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             foreach (Participation existingParticipant in participations)
             {
                 if (existingParticipant.Name == participant.Name)
                 {
-                    MessageBox.Show("Участник уже добавлен в это событие!");
+                    MessageBox.Show("Участник уже добавлен в это событие!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
             participant.ParticipationId = Guid.NewGuid();
             participations.Add(participant);
             LoadParticipation();
-            MessageBox.Show("Пользователь добавлен");
+            MessageBox.Show("Пользователь добавлен", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -107,7 +109,8 @@ namespace App
                 if (AddNewEvent(newEvent))
                 {
                     Main.LoadEvents();
-                    MessageBox.Show("Событие добавлено");
+                    MessageBox.Show("Событие добавлено", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
             }
             catch (Exception exception)
@@ -126,7 +129,7 @@ namespace App
             if (string.IsNullOrWhiteSpace(newEvent.Title) || string.IsNullOrWhiteSpace(newEvent.Description) || string.IsNullOrWhiteSpace(newEvent.Time) ||
                 string.IsNullOrWhiteSpace(newEvent.Category))
             {
-                MessageBox.Show("Не все поля заполнены!");
+                MessageBox.Show("Не все поля заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             if (!CorrectTime(newEvent.Time))
@@ -138,7 +141,7 @@ namespace App
             {
                 if (ExistingEvent(newEvent))
                 {
-                    MessageBox.Show("Такое событие уже существует!");
+                    MessageBox.Show("Такое событие уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 db.Events.Add(newEvent);
@@ -147,7 +150,7 @@ namespace App
                 {
                     if (ExistingParticipant(participant, newEvent.EventId))
                     {
-                        MessageBox.Show("Участик уже участвует в этом событии!");
+                        MessageBox.Show("Участик уже участвует в этом событии!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return false;
                     }
                     participant.EventId = newEvent.EventId;
@@ -165,14 +168,14 @@ namespace App
         {
             if (dataGridParticipant.CurrentRow == null)
             {
-                MessageBox.Show("Выберите участника для удаления");
+                MessageBox.Show("Выберите участника для удаления", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             int index = dataGridParticipant.CurrentRow.Index;
             participations.RemoveAt(index);
             LoadParticipation();
-            MessageBox.Show("Участник удалён");
+            MessageBox.Show("Участник удалён", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

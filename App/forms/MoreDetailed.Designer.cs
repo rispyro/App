@@ -30,11 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
-            this.textDescription = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textDescription = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +49,7 @@
             // 
             // dataGridViewParticipant
             // 
+            this.dataGridViewParticipant.AllowUserToAddRows = false;
             this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewParticipant.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -62,23 +63,6 @@
             this.dataGridViewParticipant.RowTemplate.Height = 24;
             this.dataGridViewParticipant.Size = new System.Drawing.Size(330, 243);
             this.dataGridViewParticipant.TabIndex = 3;
-            // 
-            // textDescription
-            // 
-            this.textDescription.Location = new System.Drawing.Point(32, 316);
-            this.textDescription.Multiline = true;
-            this.textDescription.Name = "textDescription";
-            this.textDescription.Size = new System.Drawing.Size(330, 230);
-            this.textDescription.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 297);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Описание";
             // 
             // EventId
             // 
@@ -99,6 +83,24 @@
             this.ParticipationId.MinimumWidth = 6;
             this.ParticipationId.Name = "ParticipationId";
             this.ParticipationId.Visible = false;
+            // 
+            // textDescription
+            // 
+            this.textDescription.Location = new System.Drawing.Point(32, 316);
+            this.textDescription.Multiline = true;
+            this.textDescription.Name = "textDescription";
+            this.textDescription.ReadOnly = true;
+            this.textDescription.Size = new System.Drawing.Size(330, 230);
+            this.textDescription.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(163, 297);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Описание";
             // 
             // Participants
             // 

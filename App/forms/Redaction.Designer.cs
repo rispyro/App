@@ -44,10 +44,10 @@
             this.textCategory = new System.Windows.Forms.TextBox();
             this.textTitle = new System.Windows.Forms.TextBox();
             this.dataGridViewParticipant = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParticipationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewParticipant)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,6 +193,7 @@
             // 
             // dataGridViewParticipant
             // 
+            this.dataGridViewParticipant.AllowUserToAddRows = false;
             this.dataGridViewParticipant.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewParticipant.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridViewParticipant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -206,13 +207,6 @@
             this.dataGridViewParticipant.RowTemplate.Height = 24;
             this.dataGridViewParticipant.Size = new System.Drawing.Size(293, 168);
             this.dataGridViewParticipant.TabIndex = 34;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(22, 109);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(114, 22);
-            this.dateTimePicker1.TabIndex = 35;
             // 
             // EventId
             // 
@@ -234,12 +228,19 @@
             this.ParticipationId.Name = "ParticipationId";
             this.ParticipationId.Visible = false;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(22, 109);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(114, 22);
+            this.dateTimePicker1.TabIndex = 35;
+            // 
             // Redaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(591, 527);
+            this.ClientSize = new System.Drawing.Size(562, 527);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGridViewParticipant);
             this.Controls.Add(this.label7);

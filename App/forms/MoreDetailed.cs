@@ -32,13 +32,14 @@ namespace App
         /// </summary>
         private void Participants_Load(object sender, EventArgs e)
         {
+
             Events events = new Events();
             using (var db = new EventsContext())
             {
                 events = db.Events.Find(ID);
                 if (events == null)
                 {
-                    MessageBox.Show("Событие не найдено");
+                    MessageBox.Show("Событие не найдено", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 textDescription.Text = events.Description;
