@@ -9,7 +9,7 @@ namespace App
 {
     public partial class Main : Form
     {
-        private string currentSort = "";
+        private string currentSort = "Title";
         /// <summary>
         /// Конструктор главной формы
         /// </summary>

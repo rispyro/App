@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridEvents = new System.Windows.Forms.DataGridView();
             this.EventId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,14 +62,14 @@
             this.Time,
             this.Category,
             this.Description});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.MidnightBlue;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridEvents.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridEvents.GridColor = System.Drawing.Color.Azure;
             this.dataGridEvents.Location = new System.Drawing.Point(22, 45);
             this.dataGridEvents.Name = "dataGridEvents";
@@ -125,6 +125,7 @@
             // radioButtonName
             // 
             this.radioButtonName.AutoSize = true;
+            this.radioButtonName.Checked = true;
             this.radioButtonName.Location = new System.Drawing.Point(22, 13);
             this.radioButtonName.Name = "radioButtonName";
             this.radioButtonName.Size = new System.Drawing.Size(103, 20);
@@ -140,7 +141,6 @@
             this.radioButtonDate.Name = "radioButtonDate";
             this.radioButtonDate.Size = new System.Drawing.Size(80, 20);
             this.radioButtonDate.TabIndex = 3;
-            this.radioButtonDate.TabStop = true;
             this.radioButtonDate.Text = "По дате";
             this.radioButtonDate.UseVisualStyleBackColor = true;
             // 
@@ -153,7 +153,6 @@
             this.radioButtonCategory.Name = "radioButtonCategory";
             this.radioButtonCategory.Size = new System.Drawing.Size(117, 20);
             this.radioButtonCategory.TabIndex = 4;
-            this.radioButtonCategory.TabStop = true;
             this.radioButtonCategory.Text = "По категории";
             this.radioButtonCategory.UseVisualStyleBackColor = true;
             // 

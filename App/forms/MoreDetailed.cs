@@ -67,5 +67,6 @@ namespace App
                 dataGridViewParticipant.Rows.Add(participant.EventId, participant.Name, participant.ParticipationId);
             }
         }
+
     }
 }

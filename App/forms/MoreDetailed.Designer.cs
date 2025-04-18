@@ -86,6 +86,7 @@
             // 
             // textDescription
             // 
+            this.textDescription.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.textDescription.Location = new System.Drawing.Point(32, 316);
             this.textDescription.Multiline = true;
             this.textDescription.Name = "textDescription";

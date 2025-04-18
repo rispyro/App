@@ -128,6 +128,12 @@ namespace App
                 db.Events.Remove(db.Events.Find(id));
                 db.Events.Add(updateEvent);
                 db.SaveChanges();
+                foreach (var participant in participations)
+                {
+                    participant.EventId = updateEvent.EventId;
+                    db.Participation.Add(participant);
+                }
+                db.SaveChanges();
             }
 
             MessageBox.Show("Информация о событии обновлена", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -176,9 +182,9 @@ namespace App
                 db.SaveChanges();
                 participations.Add(participation);
                 LoadParticipation();
-                Main.LoadEvents();
-                MessageBox.Show("Участник добавлен", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            Main.LoadEvents();
+            MessageBox.Show("Участник добавлен", "Удачно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
