@@ -17,14 +17,12 @@ namespace AppTests
             Events events = new Events()
             {
                 EventId = Guid.NewGuid(),
-                Title = "ы",
+                Title = "ы2",
                 Description = "ы",
                 Date = "ы",
                 Time = "12:30",
                 Category = "ы"
             };
-
-            int RowsCount = main.dataGridEvents.Rows.Count;
 
             add.AddNewEvent(events);
             main.LoadEvents();
@@ -45,7 +43,7 @@ namespace AppTests
         }
 
         [TestMethod]
-        public void Main_Delete()
+        public void Main_DeleteNonExistEvent()
         {
             Main main = new Main();
             int RowsCount = main.dataGridEvents.Rows.Count;
@@ -56,10 +54,36 @@ namespace AppTests
         }
 
         [TestMethod]
-        public void Main_Redact()
+        public void Main_AddEvent()
         {
             Main main = new Main();
-            
+            Add add = new Add(main);
+            Events events = new Events()
+            {
+                EventId = Guid.NewGuid(),
+                Title = "ы1",
+                Description = "ы",
+                Date = "ы",
+                Time = "12:30",
+                Category = "ы"
+            };
+
+            add.AddNewEvent(events);
+            main.LoadEvents();
+
+            int rowId = main.dataGridEvents.Rows.Count-2;
+
+            DataGridViewRow row = main.dataGridEvents.Rows[rowId];
+
+            bool ans = false;
+
+            if (events.EventId == (Guid)row.Cells[0].Value && events.Title == row.Cells[1].Value.ToString() && events.Date == (string)row.Cells[2].Value &&
+                events.Date == row.Cells[3].Value.ToString() && events.Time == row.Cells[4].Value.ToString() && events.Category == row.Cells[5].Value.ToString())
+            {
+                ans = !ans;
+            }
+
+            Assert.AreEqual(false, ans);
         }
     }
 }

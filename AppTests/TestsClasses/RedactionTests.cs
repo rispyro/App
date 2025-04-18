@@ -56,5 +56,49 @@ namespace AppTests
 
             Assert.AreEqual(false, IsBInBd && !IsBInBd);
         }
+        [TestMethod]
+        public void Redaction_UpdateEventWithError()
+        {
+            Main main = new Main();
+            Add add = new Add(main);
+
+            Guid id = Guid.NewGuid();
+            Events events = new Events()
+            {
+                EventId = id,
+                Title = "ы",
+                Description = "ы",
+                Date = "ы",
+                Time = "12:30",
+                Category = "ы"
+            };
+
+            add.AddNewEvent(events);
+            main.LoadEvents();
+
+            Redaction redact = new Redaction(id, main);
+            Events updEvent = new Events()
+            {
+                EventId = Guid.NewGuid(),
+                Title = "ы",
+                Description = "ы",
+                Date = "ы",
+                Time = "12:30",
+                Category = ""
+            };
+            redact.UpdateEvent(updEvent, id);
+
+            bool ans = true;
+
+            using (var db = new EventsContext())
+            {
+                if (db.Events.Find(updEvent.EventId) == null)
+                {
+                    ans = !ans;
+                }
+            }
+
+            Assert.AreEqual(false, ans);
+        }
     }
 }

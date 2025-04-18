@@ -53,5 +53,50 @@ namespace AppTests
 
             Assert.AreEqual(false, curr);
         }
+        [TestMethod]
+        public void Add_AddNewPart()
+        {
+            Add add = new Add(new Main());
+
+            Participation newPart = new Participation() { Name = "Василий" };
+            add.AddNewParticipation(newPart);
+
+            bool ans = true;
+
+            if (add.dataGridParticipant.Rows[0].Cells[1].Value.ToString() != newPart.Name)
+            {
+                ans = !ans;
+            }
+
+            Assert.AreEqual(true, ans);
+        }
+        [TestMethod]
+        public void Add_AddNWithUncorrectTime()
+        {
+            Add add = new Add(new Main());
+
+            Events events = new Events()
+            {
+                EventId = Guid.NewGuid(),
+                Title = "ы1",
+                Description = "ы",
+                Date = "ы",
+                Time = "00:00",
+                Category = "ы"
+            };
+
+            add.AddNewEvent(events);
+
+            bool ans = false;
+            using (var db = new EventsContext())
+            {
+                if (db.Events.Find(events.EventId) == null)
+                {
+                    ans = !ans;
+                }
+            }
+
+            Assert.AreEqual(true, ans);
+        }
     }
 }
