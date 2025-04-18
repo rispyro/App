@@ -7,6 +7,9 @@ namespace AppTests
     [TestClass]
     public class RedactionTests
     {
+        /// <summary>
+        /// Тест: проверка обновления события
+        /// </summary>
         [TestMethod]
         public void Redaction_UpdateEvent()
         {
@@ -56,6 +59,9 @@ namespace AppTests
 
             Assert.AreEqual(false, IsBInBd && !IsBInBd);
         }
+        /// <summary>
+        /// Тест: проверка на недобавление события с незаполненными полями
+        /// </summary>
         [TestMethod]
         public void Redaction_UpdateEventWithError()
         {

@@ -8,6 +8,9 @@ namespace AppTests
     [TestClass]
     public class MainTests
     {
+        /// <summary>
+        /// Тест: удаление события
+        /// </summary>
         [TestMethod]
         public void Main_DeleteEvent()
         {
@@ -41,6 +44,9 @@ namespace AppTests
 
             Assert.AreEqual(false, curr);
         }
+        /// <summary>
+        /// Тест: Неудаление несуществующего события
+        /// </summary>
 
         [TestMethod]
         public void Main_DeleteNonExistEvent()
@@ -52,6 +58,9 @@ namespace AppTests
 
             Assert.AreEqual(RowsCount, main.dataGridEvents.RowCount);
         }
+        /// <summary>
+        /// Тест: добавление события
+        /// </summary>
 
         [TestMethod]
         public void Main_AddEvent()

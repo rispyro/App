@@ -7,14 +7,22 @@ namespace AppTests
     [TestClass]
     public class AddTests
     {
+        /// <summary>
+        /// Тест: проверяет, что участник с незаполненными полями не добавляется в БД
+        /// </summary>
         [TestMethod]
         public void Add_AddNewParticioation_EmptyArgument()
         {
             Add add = new Add(new Main());
             Participation participation = new Participation();
 
-            Assert.ThrowsException<Exception>(() => add.AddNewParticipation(participation));
+            add.AddNewParticipation(participation);
+
+            Assert.AreEqual(null, new EventsContext().Participation.Find(participation.ParticipationId));
         }
+        /// <summary>
+        /// Тест: проверяет, что событие с незаполненными полями не добавляется в БД
+        /// </summary>
         [TestMethod]
         public void Add_AddNewEvent_EmptyArgument()
         {
@@ -30,6 +38,9 @@ namespace AppTests
             }
             Assert.AreEqual(false, actual);
         }
+        /// <summary>
+        /// Тест: проверка удаления участника на форме Add
+        /// </summary>
         [TestMethod]
         public void DeletePart()
         {
@@ -38,7 +49,7 @@ namespace AppTests
             int RowsCount = add.dataGridParticipant.Rows.Count;
             add.AddNewParticipation(part);
 
-            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 2].Cells[0].Value;
+            Guid id = (Guid)add.dataGridParticipant.Rows[add.dataGridParticipant.Rows.Count - 1].Cells[0].Value;
 
             add.DeletePart(id);
 
@@ -53,6 +64,9 @@ namespace AppTests
 
             Assert.AreEqual(false, curr);
         }
+        /// <summary>
+        /// Тест: Проверка добавления пользователя
+        /// </summary>
         [TestMethod]
         public void Add_AddNewPart()
         {
@@ -70,8 +84,11 @@ namespace AppTests
 
             Assert.AreEqual(true, ans);
         }
+        /// <summary>
+        /// Тест: проверка на недобавление события с некоррекно введенным временем
+        /// </summary>
         [TestMethod]
-        public void Add_AddNWithUncorrectTime()
+        public void Add_AddNewEventWithUncorrectTime()
         {
             Add add = new Add(new Main());
 
