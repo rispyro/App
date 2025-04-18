@@ -90,7 +90,7 @@ namespace App
                 UpdateEvent(updateEvent, ID);
                 Main.LoadEvents();
             }
-            catch (ArgumentException ae)
+            catch (Exception ae)
             {
                 MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

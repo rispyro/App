@@ -52,7 +52,7 @@ namespace App
 
                 MessageBox.Show("Пользователь добавлен");
             }
-            catch (ArgumentException ae)
+            catch (Exception ae)
             {
                 MessageBox.Show(ae.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -66,7 +66,7 @@ namespace App
         {
             if (string.IsNullOrEmpty(participant.Name))
             {
-                throw new ArgumentException("Не все поля заполнены!");
+                throw new Exception("Не все поля заполнены!");
             }
             if (ExistingParticipant(participant.Name))
             {
