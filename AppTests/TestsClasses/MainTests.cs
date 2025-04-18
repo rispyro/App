@@ -13,6 +13,7 @@ namespace AppTests
         {
             Main main = new Main();
             Add add = new Add(main);
+
             Events events = new Events()
             {
                 EventId = Guid.NewGuid(),
@@ -22,11 +23,13 @@ namespace AppTests
                 Time = "12:30",
                 Category = "ы"
             };
+
             int RowsCount = main.dataGridEvents.Rows.Count;
+
             add.AddNewEvent(events);
             main.LoadEvents();
-            Guid id = (Guid)main.dataGridEvents.Rows[main.dataGridEvents.Rows.Count - 2].Cells[0].Value;
 
+            Guid id = (Guid)main.dataGridEvents.Rows[main.dataGridEvents.Rows.Count - 2].Cells[0].Value;
             main.DeleteEvent(id);
 
             bool curr = true;
@@ -56,11 +59,7 @@ namespace AppTests
         public void Main_Redact()
         {
             Main main = new Main();
-            int RowsCount = main.dataGridEvents.Rows.Count;
-
-            //main.
-
-            Assert.AreEqual(RowsCount, main.dataGridEvents.RowCount);
+            
         }
     }
 }

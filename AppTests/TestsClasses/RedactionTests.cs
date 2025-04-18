@@ -23,8 +23,10 @@ namespace AppTests
                 Time = "12:30",
                 Category = "ы"
             };
+
             add.AddNewEvent(events);
             main.LoadEvents();
+
             Redaction redact = new Redaction(id, main);
             Events updEvent = new Events()
             {
